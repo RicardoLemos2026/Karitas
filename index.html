@@ -267,31 +267,76 @@ document.getElementById("kpiBas").textContent = fmt(annualMeta.bas);
 document.getElementById("kpiMas").textContent = fmt(annualMeta.mas);
 document.getElementById("kpiMeg").textContent = fmt(annualMeta.meg);
 
-// ── ACUMULADO ────────────────────────────────────────────────────────────────
-const closedMonths = months.filter(m=>m.mp!==null);
-const acumMP = closedMonths.reduce((s,m)=>s+m.mp,0);
-const acum2025Closed = closedMonths.reduce((s,m)=>s+m.r2025,0);
-const acumGrowth = acum2025Closed>0 ? (acumMP-acum2025Closed)/acum2025Closed*100 : null;
-const metaPropMin = closedMonths.reduce((s,m)=>s+m.min,0);
-const metaPropBas = closedMonths.reduce((s,m)=>s+m.bas,0);
-const metaPropMas = closedMonths.reduce((s,m)=>s+m.mas,0);
-const metaPropMeg = closedMonths.reduce((s,m)=>s+m.meg,0);
-const pctMin=acumMP/metaPropMin*100, pctBas=acumMP/metaPropBas*100;
-const pctMas=acumMP/metaPropMas*100, pctMeg=acumMP/metaPropMeg*100;
-const gapMas=acumMP-metaPropMas, gapMeg=acumMP-metaPropMeg;
-const nivelAtual=getNivel(acumMP,metaPropMin,metaPropBas,metaPropMas,metaPropMeg);
+// ── ACUMULADO até a última SEMANA FECHADA ────────────────────────────────────
+// Lógica: meses com total mensal fechado SEM detalhamento semanal (Jan–Jun)
+// + semanas individuais fechadas (com real != null) dos meses com acompanhamento semanal.
+// Um mês com semanas só entra como total mensal se TODAS as semanas tiverem real;
+// caso contrário, apenas as semanas fechadas entram no acumulado.
+
+// Passo 1: separar meses sem semanas (fechados completos) vs meses com semanas
+const fullClosedMonths = months.filter(m => {
+  if(m.mp === null) return false;
+  const acM = acData.find(a => a.name === m.name);
+  return !acM || acM.weeks.length === 0; // meses sem estrutura semanal (Jan–Jun)
+});
+
+// Passo 2: semanas individuais fechadas (real != null) de meses com acompanhamento semanal
+const closedWeeks = [];
+acData.forEach(acMonth => {
+  if(!acMonth.weeks || acMonth.weeks.length === 0) return;
+  acMonth.weeks.forEach(w => {
+    if(w.real !== null) closedWeeks.push({ month: acMonth.name, week: w });
+  });
+});
+
+// Passo 3: identificar a última unidade fechada para o label do período
+const lastFullMonth = fullClosedMonths[fullClosedMonths.length - 1];
+const lastClosedWeek = closedWeeks.length > 0 ? closedWeeks[closedWeeks.length - 1] : null;
+const periodoLabel = lastClosedWeek
+  ? `${fullClosedMonths[0].name} – ${lastClosedWeek.month} (sem. ${lastClosedWeek.week.label})`
+  : `${fullClosedMonths[0].name} – ${lastFullMonth.name}`;
+
+// Passo 4: somar realizado e metas proporcionais
+const acumMP      = fullClosedMonths.reduce((s,m) => s + m.mp,  0)
+                  + closedWeeks.reduce((s,e) => s + e.week.real, 0);
+const acum2025    = fullClosedMonths.reduce((s,m) => s + m.r2025, 0)
+                  + closedWeeks.reduce((s,e) => {
+                      // 2025 proporcional da semana: r2025 do mês × (dias_semana / dias_mês)
+                      const mData = months.find(mm => mm.name === e.month);
+                      const diasMes = [31,28,31,30,31,30,31,31,30,31,30,31];
+                      const mIdx = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho",
+                                    "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"]
+                                    .indexOf(e.month);
+                      const parts = e.week.label.split('a').map(x => parseInt(x.trim()));
+                      const diasSemana = parts[1] - parts[0] + 1;
+                      return s + (mData ? mData.r2025 * (diasSemana / diasMes[mIdx]) : 0);
+                    }, 0);
+const metaPropMin = fullClosedMonths.reduce((s,m) => s + m.min, 0)
+                  + closedWeeks.reduce((s,e) => s + e.week.min, 0);
+const metaPropBas = fullClosedMonths.reduce((s,m) => s + m.bas, 0)
+                  + closedWeeks.reduce((s,e) => s + e.week.bas, 0);
+const metaPropMas = fullClosedMonths.reduce((s,m) => s + m.mas, 0)
+                  + closedWeeks.reduce((s,e) => s + e.week.mas, 0);
+const metaPropMeg = fullClosedMonths.reduce((s,m) => s + m.meg, 0)
+                  + closedWeeks.reduce((s,e) => s + e.week.meg, 0);
+
+const acumGrowth = acum2025 > 0 ? (acumMP - acum2025) / acum2025 * 100 : null;
+const pctMin = acumMP/metaPropMin*100, pctBas = acumMP/metaPropBas*100;
+const pctMas = acumMP/metaPropMas*100, pctMeg = acumMP/metaPropMeg*100;
+const gapMas = acumMP - metaPropMas, gapMeg = acumMP - metaPropMeg;
+const nivelAtual = getNivel(acumMP, metaPropMin, metaPropBas, metaPropMas, metaPropMeg);
 
 document.getElementById("acumBanner").innerHTML=`
   <div class="acum-item">
     <div class="acum-label">Total Realizado 2026</div>
     <div class="acum-val">${fmt(acumMP)}</div>
-    <div class="acum-note">${closedMonths[0].name} – ${closedMonths[closedMonths.length-1].name}</div>
+    <div class="acum-note">${periodoLabel}</div>
   </div>
   <div class="acum-sep"></div>
   <div class="acum-item">
     <div class="acum-label">Crescimento vs 2025</div>
     <div class="acum-sub" style="color:${acumGrowth>=0?"var(--master)":"var(--minimo)"}">${acumGrowth>=0?"▲ ":"▼ "}${Math.abs(acumGrowth).toFixed(1)}%</div>
-    <div class="acum-note">${fmt(acumMP)} vs ${fmt(acum2025Closed)}</div>
+    <div class="acum-note">${fmt(acumMP)} vs ${fmt(acum2025)} (2025 proporcional)</div>
   </div>
   <div class="acum-sep"></div>
   <div class="acum-item" style="flex:1;min-width:280px;">
