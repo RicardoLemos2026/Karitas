@@ -9,8 +9,7 @@
   :root {
     --bg:#f6f5fb;--surface:#fff;--surface2:#efeef7;--border:rgba(20,10,40,0.09);
     --text:#211a35;--muted:#7c7693;
-    --pink:#ec1f7d;--pink-soft:rgba(236,31,125,0.10);
-    --teal:#19c2c8;--teal-soft:rgba(25,194,200,0.12);
+    --pink:#ec1f7d;--teal:#19c2c8;
     --minimo:#c0392b;--minimo-bg:rgba(192,57,43,0.08);
     --basica:#b7860a;--basica-bg:rgba(183,134,10,0.10);
     --master:#1e7d46;--master-bg:rgba(30,125,70,0.09);
@@ -19,25 +18,31 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;}
   body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 8% 0%,rgba(236,31,125,0.05) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 92% 100%,rgba(25,194,200,0.05) 0%,transparent 55%);pointer-events:none;z-index:0;}
-  .page{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 60px;}
+  .page{position:relative;z-index:1;max-width:1480px;margin:0 auto;padding:0 28px 60px;}
+
+  /* ── HEADER ── */
   header{display:flex;align-items:center;justify-content:space-between;padding:24px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px;}
   .logo-wrap{background:#0b0b14;border-radius:14px;padding:12px 20px;display:inline-flex;align-items:center;}
   .logo-wrap img{height:46px;display:block;}
   .header-right{text-align:right;}
   .header-right .label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-family:'DM Mono',monospace;}
-  .header-right .year{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:46px;line-height:1;color:var(--pink);letter-spacing:0.5px;}
+  .header-right .year{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:46px;line-height:1;color:var(--pink);}
   .header-right .analyst{font-size:13px;color:var(--muted);margin-top:2px;}
-  .analyst strong{color:var(--text);font-weight:700;}
+
+  /* ── LEGEND ── */
   .legend-bar{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:32px;padding:14px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;}
   .legend-item{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;}
   .legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
-  .l-min .legend-dot{background:var(--minimo);}.l-bas .legend-dot{background:var(--basica);}
-  .l-mas .legend-dot{background:var(--master);}.l-meg .legend-dot{background:var(--mega);}
-  .l-min{color:var(--minimo);}.l-bas{color:var(--basica);}.l-mas{color:var(--master);}.l-meg{color:var(--mega);}
+  .l-min .legend-dot{background:var(--minimo);} .l-bas .legend-dot{background:var(--basica);}
+  .l-mas .legend-dot{background:var(--master);} .l-meg .legend-dot{background:var(--mega);}
+  .l-min{color:var(--minimo);} .l-bas{color:var(--basica);} .l-mas{color:var(--master);} .l-meg{color:var(--mega);}
   .legend-sep{width:1px;background:var(--border);align-self:stretch;}
+
+  /* ── SECTION TITLE ── */
   .section-title{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.5px;color:var(--muted);text-transform:uppercase;margin-bottom:14px;padding-bottom:7px;border-bottom:1px solid var(--border);}
   .section-title span{color:var(--pink);}
-  /* KPIs */
+
+  /* ── KPI CARDS ── */
   .annual-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px;}
   .kpi-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;}
   .kpi-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.08);}
@@ -53,11 +58,12 @@
   .kpi-mas .kpi-badge{background:var(--master-bg);color:var(--master);border:1px solid rgba(30,125,70,0.25);}
   .kpi-meg .kpi-badge{background:var(--mega-bg);color:var(--mega);border:1px solid rgba(160,114,13,0.25);}
   .kpi-val{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:32px;line-height:1;letter-spacing:0.3px;margin-bottom:3px;}
-  .kpi-min .kpi-val{color:var(--minimo);}.kpi-bas .kpi-val{color:var(--basica);}.kpi-mas .kpi-val{color:var(--master);}.kpi-meg .kpi-val{color:var(--mega);}
+  .kpi-min .kpi-val{color:var(--minimo);} .kpi-bas .kpi-val{color:var(--basica);} .kpi-mas .kpi-val{color:var(--master);} .kpi-meg .kpi-val{color:var(--mega);}
   .kpi-label{font-size:11px;color:var(--muted);font-weight:500;}
-  /* Acumulado */
+
+  /* ── ACUMULADO BANNER ── */
   .acum-banner{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:36px;display:flex;align-items:stretch;gap:24px;flex-wrap:wrap;}
-  .acum-val{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:36px;color:var(--pink);letter-spacing:0.3px;}
+  .acum-val{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:36px;color:var(--pink);}
   .acum-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:3px;}
   .acum-sep{width:1px;background:var(--border);align-self:stretch;min-height:36px;}
   .acum-item{display:flex;flex-direction:column;justify-content:center;}
@@ -67,15 +73,12 @@
   .pct-item{display:flex;flex-direction:column;gap:2px;}
   .pct-val{font-family:'DM Mono',monospace;font-size:14px;font-weight:700;}
   .pct-meta{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;}
-  /* Realizado */
+
+  /* ── CARDS MENSAIS ── */
   .realizado-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:36px;}
   .real-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;}
-  .real-month{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.2px;color:var(--text);}
-  .real-parcial{font-size:10px;color:var(--muted);font-style:italic;}
-  .real-amounts{display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;}
+  .real-month{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:16px;color:var(--text);}
   .real-amount{font-family:'DM Mono',monospace;font-size:17px;font-weight:700;color:var(--pink);}
-  .real-amount-sub{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;color:var(--teal);}
-  .real-amount-tag{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-right:3px;}
   .real-growth{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;font-family:'DM Mono',monospace;padding:2px 7px;border-radius:20px;}
   .growth-pos{background:rgba(30,125,70,0.12);color:var(--master);}
   .growth-neg{background:rgba(192,57,43,0.12);color:var(--minimo);}
@@ -85,10 +88,11 @@
   .meta-line{display:flex;justify-content:space-between;align-items:center;}
   .meta-line-label{font-size:10px;color:var(--muted);}
   .meta-line-val{font-family:'DM Mono',monospace;font-size:10px;}
-  /* Trimestres */
+
+  /* ── TRIMESTRES ── */
   .quarter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px;}
   .q-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;}
-  .q-label{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:24px;color:var(--pink);letter-spacing:0.3px;}
+  .q-label{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:24px;color:var(--pink);}
   .q-months-label{font-size:11px;color:var(--muted);margin-bottom:4px;}
   .q-acumulado{font-family:'DM Mono',monospace;font-size:18px;font-weight:700;color:var(--text);margin-bottom:12px;}
   .q-acumulado-label{font-size:10px;color:var(--muted);font-weight:400;margin-left:4px;}
@@ -101,21 +105,48 @@
   .q-meta-bar{height:100%;border-radius:3px;}
   .q-meta-footer{display:flex;justify-content:space-between;font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);}
   .q-meta-pct{font-weight:700;}
-  .gap-pos{color:var(--master);}.gap-neg{color:var(--minimo);}
-  /* Tabela */
+  .gap-pos{color:var(--master);} .gap-neg{color:var(--minimo);}
+
+  /* ── ACOMPANHAMENTO SEMANAL ── */
+  .ac-month-block{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:20px;overflow:hidden;}
+  .ac-month-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--surface2);border-bottom:1px solid var(--border);cursor:pointer;user-select:none;}
+  .ac-month-header:hover{background:#e8e7f2;}
+  .ac-month-name{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:18px;color:var(--text);}
+  .ac-month-real{font-family:'DM Mono',monospace;font-size:14px;font-weight:700;color:var(--pink);}
+  .ac-month-real-label{font-size:11px;color:var(--muted);margin-right:6px;}
+  .ac-month-nivel{font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;}
+  .ac-month-chevron{font-size:14px;color:var(--muted);transition:transform .25s;}
+  .ac-month-chevron.open{transform:rotate(180deg);}
+  .ac-month-body{padding:0 16px 16px;}
+  .ac-weeks-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:12.5px;}
+  .ac-weeks-table thead th{background:var(--surface2);padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;}
+  .ac-weeks-table tbody tr{border-bottom:1px solid rgba(0,0,0,0.04);}
+  .ac-weeks-table tbody tr:hover{background:rgba(0,0,0,0.02);}
+  .ac-weeks-table tbody td{padding:8px 10px;font-family:'DM Mono',monospace;}
+  .w-label{font-weight:700;color:var(--text);}
+  .w-real-val{font-weight:700;color:var(--pink);}
+  .w-pending{color:var(--muted);font-size:11px;font-style:italic;}
+  .bat-sim{background:rgba(30,125,70,0.12);color:var(--master);font-weight:700;padding:2px 8px;border-radius:20px;font-size:10px;white-space:nowrap;}
+  .bat-nao{background:rgba(192,57,43,0.10);color:var(--minimo);font-weight:700;padding:2px 8px;border-radius:20px;font-size:10px;white-space:nowrap;}
+  .w-pct-bar{background:var(--surface2);border-radius:3px;height:4px;width:70px;display:inline-block;overflow:hidden;vertical-align:middle;margin-left:6px;}
+  .w-pct-fill{height:100%;border-radius:3px;}
+  .sched-tag{background:rgba(25,194,200,0.12);color:var(--teal);font-weight:700;padding:1px 7px;border-radius:20px;font-size:10px;}
+  .no-weeks{padding:16px;font-size:13px;color:var(--muted);font-style:italic;text-align:center;}
+
+  /* ── TABELA DETALHADA ── */
   .table-wrap{overflow-x:auto;margin-bottom:36px;}
-  table{width:100%;border-collapse:collapse;font-size:13px;}
-  thead th{background:var(--surface2);padding:11px 13px;text-align:left;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;}
-  tbody tr{border-bottom:1px solid rgba(0,0,0,0.04);transition:background .15s;}
-  tbody tr:hover{background:rgba(0,0,0,0.02);}
-  tbody td{padding:10px 13px;font-weight:700;color:var(--text);}
+  table.main-table{width:100%;border-collapse:collapse;font-size:13px;}
+  table.main-table thead th{background:var(--surface2);padding:11px 13px;text-align:left;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;}
+  table.main-table tbody tr{border-bottom:1px solid rgba(0,0,0,0.04);transition:background .15s;}
+  table.main-table tbody tr:hover{background:rgba(0,0,0,0.02);}
+  table.main-table tbody td{padding:10px 13px;font-weight:700;color:var(--text);}
   .td-minimo{color:var(--minimo);font-family:'DM Mono',monospace;font-weight:600;}
   .td-basica{color:var(--basica);font-family:'DM Mono',monospace;font-weight:600;}
   .td-master{color:var(--master);font-family:'DM Mono',monospace;font-weight:600;}
   .td-mega{color:var(--mega);font-family:'DM Mono',monospace;font-weight:600;}
   .td-2025{color:var(--muted);font-family:'DM Mono',monospace;font-weight:600;}
-  .td-qb{color:var(--teal);font-family:'DM Mono',monospace;font-weight:700;}
   .td-mp{color:var(--pink);font-family:'DM Mono',monospace;font-weight:700;}
+  .td-qb{color:var(--teal);font-family:'DM Mono',monospace;font-weight:600;}
   .nivel-badge{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap;}
   .nivel-mega{background:rgba(160,114,13,0.12);color:var(--mega);}
   .nivel-master{background:rgba(30,125,70,0.12);color:var(--master);}
@@ -123,17 +154,19 @@
   .nivel-minimo{background:rgba(192,57,43,0.12);color:var(--minimo);}
   .nivel-abaixo{background:rgba(107,107,127,0.10);color:var(--muted);}
   .nivel-vazio{color:var(--muted);font-size:12px;font-weight:400;}
+
   footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;flex-wrap:wrap;gap:8px;}
   @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
   .animate{animation:fadeUp .45s ease both;}
-  .a1{animation-delay:.04s}.a2{animation-delay:.09s}.a3{animation-delay:.14s}.a4{animation-delay:.18s}.a5{animation-delay:.23s}
-  @media(max-width:1300px){.realizado-grid{grid-template-columns:repeat(2,1fr);}}
+  .a1{animation-delay:.04s} .a2{animation-delay:.09s} .a3{animation-delay:.14s} .a4{animation-delay:.18s} .a5{animation-delay:.23s}
+  @media(max-width:1200px){.realizado-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:900px){.annual-grid{grid-template-columns:repeat(2,1fr);}.quarter-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:600px){.annual-grid{grid-template-columns:1fr;}.realizado-grid{grid-template-columns:1fr;}.quarter-grid{grid-template-columns:1fr;}.acum-banner{flex-direction:column;}.pct-grid{flex-direction:column;}header{flex-direction:column;gap:14px;text-align:center;}.header-right{text-align:center;}}
+  @media(max-width:600px){.annual-grid,.realizado-grid,.quarter-grid{grid-template-columns:1fr;}.acum-banner,.pct-grid{flex-direction:column;}header{flex-direction:column;gap:14px;text-align:center;}.header-right{text-align:center;}}
 </style>
 </head>
 <body>
 <div class="page">
+
   <header class="animate">
     <div class="logo-wrap"><img src="data:image/png;base64,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" alt="Karita's Cleaning Service"></div>
     <div class="header-right">
@@ -170,9 +203,12 @@
   <div class="section-title animate a3">Metas por <span>Trimestre</span></div>
   <div class="quarter-grid" id="quarterGrid"></div>
 
-  <div class="section-title animate a4">Acompanhamento <span>Detalhado</span></div>
+  <div class="section-title animate a4">Acompanhamento <span>Semanal</span> — Jul a Dez</div>
+  <div id="acGrid"></div>
+
+  <div class="section-title animate a5">Tabela <span>Detalhada</span></div>
   <div class="table-wrap animate a5">
-    <table>
+    <table class="main-table">
       <thead>
         <tr>
           <th>Mês</th>
@@ -202,12 +238,14 @@
 const fmt = v => (v===null||v===undefined||isNaN(v))?"—":"$"+Number(v).toLocaleString("en-US",{minimumFractionDigits:0,maximumFractionDigits:0});
 const fmtPct = v => (v===null||v===undefined||isNaN(v))?"—":v.toFixed(1)+"%";
 
-const DATA = {"months": [{"name": "Janeiro", "min": 109399.875, "bas": 120339.8625, "mas": 132373.84875, "meg": 145611.233625, "r2025": 84153.75, "qb": 99741.9, "mp": 111077.06, "growth": 0.3199300090607964}, {"name": "Fevereiro", "min": 106428.296, "bas": 117071.1256, "mas": 128778.23816000001, "meg": 141656.061976, "r2025": 81867.92, "qb": 109367.31, "mp": 125405.25, "growth": 0.5317996353150294}, {"name": "Mar\u00e7o", "min": 106503.8, "bas": 117154.18000000001, "mas": 128869.59800000001, "meg": 141756.5578, "r2025": 81926.0, "qb": 122521.95, "mp": 132595.94, "growth": 0.6184842418768157}, {"name": "Abril", "min": 132744.586, "bas": 146019.04460000002, "mas": 160620.94906, "meg": 176683.04396600003, "r2025": 102111.22, "qb": 117477.3, "mp": 137126.22, "growth": 0.3429104069072919}, {"name": "Maio", "min": 132494.856, "bas": 145744.34159999999, "mas": 160318.77576, "meg": 176350.653336, "r2025": 101919.12, "qb": 135096.56, "mp": 163832.24, "growth": 0.6074730629542326}, {"name": "Junho", "min": 119732.678, "bas": 131705.9458, "mas": 144876.54038, "meg": 159364.194418, "r2025": 92102.06, "qb": null, "mp": 101524.52, "growth": 0.1023045521457393}, {"name": "Julho", "min": 134169.1, "bas": 147586.01, "mas": 162344.611, "meg": 178579.0721, "r2025": 103207.0, "qb": null, "mp": null, "growth": null}, {"name": "Agosto", "min": 145591.329, "bas": 160150.4619, "mas": 176165.50809, "meg": 193782.058899, "r2025": 111993.33, "qb": null, "mp": null, "growth": null}, {"name": "Setembro", "min": 140146.149, "bas": 154160.76390000002, "mas": 169576.84029000002, "meg": 186534.52431900002, "r2025": 107804.73, "qb": null, "mp": null, "growth": null}, {"name": "Outubro", "min": 162827.87300000002, "bas": 179110.66030000002, "mas": 197021.72633000003, "meg": 216723.89896300004, "r2025": 125252.21, "qb": null, "mp": null, "growth": null}, {"name": "Novembro", "min": 128664.549, "bas": 141531.0039, "mas": 155684.10429000002, "meg": 171252.51471900003, "r2025": 98972.73, "qb": null, "mp": null, "growth": null}, {"name": "Dezembro", "min": 151229.897, "bas": 166352.8867, "mas": 182988.17537, "meg": 201286.992907, "r2025": 116330.69, "qb": null, "mp": null, "growth": null}], "quarters": [{"min": 322331.971, "bas": 354565.1681, "mas": 390021.68491, "meg": 429023.853401, "r2025": 247947.66999999998}, {"min": 384972.12000000005, "bas": 423469.332, "mas": 465816.2652, "meg": 512397.89172, "r2025": 296132.4}, {"min": 419906.578, "bas": 461897.2358, "mas": 508086.95938, "meg": 558895.655318, "r2025": 323005.06}, {"min": 442722.319, "bas": 486994.55090000003, "mas": 535694.00599, "meg": 589263.406589, "r2025": 340555.63}], "annual": {"min": 1569932.988, "bas": 1726926.2868000004, "mas": 1899618.91548, "meg": 2089580.807028, "r2025": 1207640.76}};
+const DATA = {"months": [{"name": "Janeiro", "min": 109399.875, "bas": 120339.8625, "mas": 132373.8488, "meg": 145611.2336, "r2025": 84153.75, "qb": 99741.9, "mp": 111077.06, "growth": 0.3199300091}, {"name": "Fevereiro", "min": 106428.296, "bas": 117071.1256, "mas": 128778.2382, "meg": 141656.062, "r2025": 81867.92, "qb": 109367.31, "mp": 125405.25, "growth": 0.5317996353}, {"name": "Março", "min": 106503.8, "bas": 117154.18, "mas": 128869.598, "meg": 141756.5578, "r2025": 81926.0, "qb": 122521.95, "mp": 132595.94, "growth": 0.6184842419}, {"name": "Abril", "min": 132744.586, "bas": 146019.0446, "mas": 160620.9491, "meg": 176683.044, "r2025": 102111.22, "qb": 117477.3, "mp": 137126.22, "growth": 0.3429104069}, {"name": "Maio", "min": 132494.856, "bas": 145744.3416, "mas": 160318.7758, "meg": 176350.6533, "r2025": 101919.12, "qb": 135096.56, "mp": 163832.24, "growth": 0.607473063}, {"name": "Junho", "min": 119732.678, "bas": 131705.9458, "mas": 144876.5404, "meg": 159364.1944, "r2025": 92102.06, "qb": null, "mp": 101524.52, "growth": 0.1023045521}, {"name": "Julho", "min": 134169.1, "bas": 147586.01, "mas": 162344.611, "meg": 178579.0721, "r2025": 103207.0, "qb": null, "mp": 23092.9, "growth": -0.7762467662}, {"name": "Agosto", "min": 145591.329, "bas": 160150.4619, "mas": 176165.5081, "meg": 193782.0589, "r2025": 111993.33, "qb": null, "mp": null, "growth": null}, {"name": "Setembro", "min": 140146.149, "bas": 154160.7639, "mas": 169576.8403, "meg": 186534.5243, "r2025": 107804.73, "qb": null, "mp": null, "growth": null}, {"name": "Outubro", "min": 162827.873, "bas": 179110.6603, "mas": 197021.7263, "meg": 216723.899, "r2025": 125252.21, "qb": null, "mp": null, "growth": null}, {"name": "Novembro", "min": 128664.549, "bas": 141531.0039, "mas": 155684.1043, "meg": 171252.5147, "r2025": 98972.73, "qb": null, "mp": null, "growth": null}, {"name": "Dezembro", "min": 151229.897, "bas": 166352.8867, "mas": 182988.1754, "meg": 201286.9929, "r2025": 116330.69, "qb": null, "mp": null, "growth": null}], "quarters": [{"min": 322331.971, "bas": 354565.1681, "mas": 390021.6849, "meg": 429023.8534, "r2025": 247947.67}, {"min": 384972.12, "bas": 423469.332, "mas": 465816.2652, "meg": 512397.8917, "r2025": 296132.4}, {"min": 419906.578, "bas": 461897.2358, "mas": 508086.9594, "meg": 558895.6553, "r2025": 323005.06}, {"min": 442722.319, "bas": 486994.5509, "mas": 535694.006, "meg": 589263.4066, "r2025": 340555.63}], "annual": {"min": 1569932.988, "bas": 1726926.287, "mas": 1899618.915, "meg": 2089580.807, "r2025": 1207640.76}, "acompanhamento": [{"name": "Janeiro", "real": 111077.06, "weeks": []}, {"name": "Fevereiro", "real": 125405.25, "weeks": []}, {"name": "Março", "real": 132595.94, "weeks": []}, {"name": "Abril", "real": 137126.22, "weeks": []}, {"name": "Maio", "real": 163832.24, "weeks": []}, {"name": "Junho", "real": 101524.52, "weeks": []}, {"name": "Julho", "real": 23092.9, "weeks": [{"label": "1 a 4", "min": 17312.14194, "bas": 19043.35613, "mas": 20947.69161, "meg": 23042.46065, "real": 23092.9}, {"label": "5 a 11", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "real": null}, {"label": "12 a 18", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "real": null}, {"label": "19 a 25", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "real": null}, {"label": "26 a 31", "min": 25968.2129, "bas": 28565.03419, "mas": 31421.53742, "meg": 34563.69097, "real": null}]}, {"name": "Agosto", "real": null, "weeks": [{"label": "1 a 8", "min": 37571.95613, "bas": 41329.15097, "mas": 45462.0671, "meg": 50008.27355, "real": null}, {"label": "9 a 15", "min": 32875.46161, "bas": 36163.0071, "mas": 39779.30871, "meg": 43757.23935, "real": null}, {"label": "16 a 22", "min": 32875.46161, "bas": 36163.0071, "mas": 39779.30871, "meg": 43757.23935, "real": null}, {"label": "23 a 31", "min": 42268.45065, "bas": 46495.29484, "mas": 51144.82548, "meg": 56259.30774, "real": null}]}, {"name": "Setembro", "real": null, "weeks": [{"label": "1 a 5", "min": 23357.69167, "bas": 25693.46, "mas": 28262.80667, "meg": 31089.08667, "real": null}, {"label": "6 a 12", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "real": null}, {"label": "13 a 19", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "real": null}, {"label": "20 a 26", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "real": null}, {"label": "27 a 30", "min": 18686.15333, "bas": 20554.768, "mas": 22610.24533, "meg": 24871.26933, "real": null}]}, {"name": "Outubro", "real": null, "weeks": [{"label": "1 a 10", "min": 52525.11935, "bas": 57777.63226, "mas": 63555.39677, "meg": 69910.93548, "real": null}, {"label": "11 a 17", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "real": null}, {"label": "18 a 24", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "real": null}, {"label": "25 a 31", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "real": null}]}, {"name": "Novembro", "real": null, "weeks": [{"label": "1 a 7", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "real": null}, {"label": "8 a 14", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "real": null}, {"label": "15 a 21", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "real": null}, {"label": "22 a 30", "min": 38599.365, "bas": 42459.3, "mas": 46705.23, "meg": 51375.753, "real": null}]}, {"name": "Dezembro", "real": null, "weeks": [{"label": "1 a 5", "min": 24391.91935, "bas": 26831.11129, "mas": 29514.22258, "meg": 32465.64355, "real": null}, {"label": "6 a 12", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "real": null}, {"label": "13 a 19", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "real": null}, {"label": "20 a 26", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "real": null}, {"label": "27 a 31", "min": 24391.91935, "bas": 26831.11129, "mas": 29514.22258, "meg": 32465.64355, "real": null}]}], "schedule": [{"name": "Julho", "sched_atual": 136904.8, "weeks": [{"label": "1 a 4", "sched": 23092.9, "gap_mas": -2145.208387, "pct_mas": 1.102407866, "ticket": 650.0, "cleans_mas": -4.0, "bat_mas": "SIM", "gap_meg": -50.43935484, "pct_meg": 1.002188974, "cleans_meg": -1.0, "bat_meg": "SIM"}, {"label": "5 a 11", "sched": 30116.0, "gap_mas": 6542.460323, "pct_mas": 0.8215293205, "ticket": 650.0, "cleans_mas": 11.0, "bat_mas": "NÃO", "gap_meg": 10208.30613, "pct_meg": 0.746844841, "cleans_meg": 16.0, "bat_meg": "NÃO"}, {"label": "12 a 18", "sched": 28499.0, "gap_mas": 8159.460323, "pct_mas": 0.7774194483, "ticket": 650.0, "cleans_mas": 13.0, "bat_mas": "NÃO", "gap_meg": 11825.30613, "pct_meg": 0.706744957, "cleans_meg": 19.0, "bat_meg": "NÃO"}, {"label": "19 a 25", "sched": 27202.0, "gap_mas": 9456.460323, "pct_mas": 0.7420388025, "ticket": 650.0, "cleans_mas": 15.0, "bat_mas": "NÃO", "gap_meg": 13122.30613, "pct_meg": 0.6745807333, "cleans_meg": 21.0, "bat_meg": "NÃO"}, {"label": "26 a 31", "sched": 27994.9, "gap_mas": 3426.637419, "pct_mas": 0.8909462203, "ticket": 650.0, "cleans_mas": 6.0, "bat_mas": "NÃO", "gap_meg": 6568.790968, "pct_meg": 0.8099511139, "cleans_meg": 11.0, "bat_meg": "NÃO"}]}, {"name": "Agosto", "sched_atual": null, "weeks": [{"label": "1 a 8", "sched": null, "gap_mas": 45462.0671, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 70.0, "bat_mas": "NÃO", "gap_meg": 50008.27355, "pct_meg": 0.0, "cleans_meg": 77.0, "bat_meg": "NÃO"}, {"label": "9 a 15", "sched": null, "gap_mas": 39779.30871, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 62.0, "bat_mas": "NÃO", "gap_meg": 43757.23935, "pct_meg": 0.0, "cleans_meg": 68.0, "bat_meg": "NÃO"}, {"label": "16 a 22", "sched": null, "gap_mas": 39779.30871, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 62.0, "bat_mas": "NÃO", "gap_meg": 43757.23935, "pct_meg": 0.0, "cleans_meg": 68.0, "bat_meg": "NÃO"}, {"label": "23 a 31", "sched": null, "gap_mas": 51144.82548, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 79.0, "bat_mas": "NÃO", "gap_meg": 56259.30774, "pct_meg": 0.0, "cleans_meg": 87.0, "bat_meg": "NÃO"}]}, {"name": "Setembro", "sched_atual": null, "weeks": [{"label": "1 a 5", "sched": null, "gap_mas": 28262.80667, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 44.0, "bat_mas": "NÃO", "gap_meg": 31089.08667, "pct_meg": 0.0, "cleans_meg": 48.0, "bat_meg": "NÃO"}, {"label": "6 a 12", "sched": null, "gap_mas": 39567.92933, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 61.0, "bat_mas": "NÃO", "gap_meg": 43524.72133, "pct_meg": 0.0, "cleans_meg": 67.0, "bat_meg": "NÃO"}, {"label": "13 a 19", "sched": null, "gap_mas": 39567.92933, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 61.0, "bat_mas": "NÃO", "gap_meg": 43524.72133, "pct_meg": 0.0, "cleans_meg": 67.0, "bat_meg": "NÃO"}, {"label": "20 a 26", "sched": null, "gap_mas": 39567.92933, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 61.0, "bat_mas": "NÃO", "gap_meg": 43524.72133, "pct_meg": 0.0, "cleans_meg": 67.0, "bat_meg": "NÃO"}, {"label": "27 a 30", "sched": null, "gap_mas": 22610.24533, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 35.0, "bat_mas": "NÃO", "gap_meg": 24871.26933, "pct_meg": 0.0, "cleans_meg": 39.0, "bat_meg": "NÃO"}]}, {"name": "Outubro", "sched_atual": null, "weeks": [{"label": "1 a 10", "sched": null, "gap_mas": 63555.39677, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 98.0, "bat_mas": "NÃO", "gap_meg": 69910.93548, "pct_meg": 0.0, "cleans_meg": 108.0, "bat_meg": "NÃO"}, {"label": "11 a 17", "sched": null, "gap_mas": 44488.77774, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 69.0, "bat_mas": "NÃO", "gap_meg": 48937.65484, "pct_meg": 0.0, "cleans_meg": 76.0, "bat_meg": "NÃO"}, {"label": "18 a 24", "sched": null, "gap_mas": 44488.77774, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 69.0, "bat_mas": "NÃO", "gap_meg": 48937.65484, "pct_meg": 0.0, "cleans_meg": 76.0, "bat_meg": "NÃO"}, {"label": "25 a 31", "sched": null, "gap_mas": 44488.77774, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 69.0, "bat_mas": "NÃO", "gap_meg": 48937.65484, "pct_meg": 0.0, "cleans_meg": 76.0, "bat_meg": "NÃO"}]}, {"name": "Novembro", "sched_atual": null, "weeks": [{"label": "1 a 7", "sched": null, "gap_mas": 36326.29, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 56.0, "bat_mas": "NÃO", "gap_meg": 39958.919, "pct_meg": 0.0, "cleans_meg": 62.0, "bat_meg": "NÃO"}, {"label": "8 a 14", "sched": null, "gap_mas": 36326.29, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 56.0, "bat_mas": "NÃO", "gap_meg": 39958.919, "pct_meg": 0.0, "cleans_meg": 62.0, "bat_meg": "NÃO"}, {"label": "15 a 21", "sched": null, "gap_mas": 36326.29, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 56.0, "bat_mas": "NÃO", "gap_meg": 39958.919, "pct_meg": 0.0, "cleans_meg": 62.0, "bat_meg": "NÃO"}, {"label": "22 a 30", "sched": null, "gap_mas": 46705.23, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 72.0, "bat_mas": "NÃO", "gap_meg": 51375.753, "pct_meg": 0.0, "cleans_meg": 80.0, "bat_meg": "NÃO"}]}, {"name": "Dezembro", "sched_atual": null, "weeks": [{"label": "1 a 5", "sched": null, "gap_mas": 29514.22258, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 46.0, "bat_mas": "NÃO", "gap_meg": 32465.64355, "pct_meg": 0.0, "cleans_meg": 50.0, "bat_meg": "NÃO"}, {"label": "6 a 12", "sched": null, "gap_mas": 41319.91161, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 64.0, "bat_mas": "NÃO", "gap_meg": 45451.90097, "pct_meg": 0.0, "cleans_meg": 70.0, "bat_meg": "NÃO"}, {"label": "13 a 19", "sched": null, "gap_mas": 41319.91161, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 64.0, "bat_mas": "NÃO", "gap_meg": 45451.90097, "pct_meg": 0.0, "cleans_meg": 70.0, "bat_meg": "NÃO"}, {"label": "20 a 26", "sched": null, "gap_mas": 41319.91161, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 64.0, "bat_mas": "NÃO", "gap_meg": 45451.90097, "pct_meg": 0.0, "cleans_meg": 70.0, "bat_meg": "NÃO"}, {"label": "27 a 31", "sched": null, "gap_mas": 29514.22258, "pct_mas": 0.0, "ticket": 650.0, "cleans_mas": 46.0, "bat_mas": "NÃO", "gap_meg": 32465.64355, "pct_meg": 0.0, "cleans_meg": 50.0, "bat_meg": "NÃO"}]}]};
 const months = DATA.months;
 const quartersMeta = DATA.quarters;
 const annualMeta = DATA.annual;
+const acData = DATA.acompanhamento;
+const schedData = DATA.schedule;
 
-const quarterLabels=[
+const quarterLabels = [
   {label:"T1",months:"Jan · Fev · Mar",mIdx:[0,1,2]},
   {label:"T2",months:"Abr · Mai · Jun",mIdx:[3,4,5]},
   {label:"T3",months:"Jul · Ago · Set",mIdx:[6,7,8]},
@@ -223,25 +261,21 @@ function getNivel(r,min,bas,mas,meg){
   return {label:"⚠️ Abaixo",cls:"nivel-abaixo"};
 }
 
-// KPIs anuais
-document.getElementById("kpiMin").textContent=fmt(annualMeta.min);
-document.getElementById("kpiBas").textContent=fmt(annualMeta.bas);
-document.getElementById("kpiMas").textContent=fmt(annualMeta.mas);
-document.getElementById("kpiMeg").textContent=fmt(annualMeta.meg);
+// ── KPIs anuais ──────────────────────────────────────────────────────────────
+document.getElementById("kpiMin").textContent = fmt(annualMeta.min);
+document.getElementById("kpiBas").textContent = fmt(annualMeta.bas);
+document.getElementById("kpiMas").textContent = fmt(annualMeta.mas);
+document.getElementById("kpiMeg").textContent = fmt(annualMeta.meg);
 
-// ACUMULADO — meses fechados (com dado MaidPad) usados para o realizado principal
+// ── ACUMULADO ────────────────────────────────────────────────────────────────
 const closedMonths = months.filter(m=>m.mp!==null);
 const acumMP = closedMonths.reduce((s,m)=>s+m.mp,0);
-const acumQB = months.filter(m=>m.qb!==null).reduce((s,m)=>s+m.qb,0);
 const acum2025Closed = closedMonths.reduce((s,m)=>s+m.r2025,0);
 const acumGrowth = acum2025Closed>0 ? (acumMP-acum2025Closed)/acum2025Closed*100 : null;
-
-// Meta proporcional = soma das metas dos meses fechados (com MaidPad)
 const metaPropMin = closedMonths.reduce((s,m)=>s+m.min,0);
 const metaPropBas = closedMonths.reduce((s,m)=>s+m.bas,0);
 const metaPropMas = closedMonths.reduce((s,m)=>s+m.mas,0);
 const metaPropMeg = closedMonths.reduce((s,m)=>s+m.meg,0);
-
 const pctMin=acumMP/metaPropMin*100, pctBas=acumMP/metaPropBas*100;
 const pctMas=acumMP/metaPropMas*100, pctMeg=acumMP/metaPropMeg*100;
 const gapMas=acumMP-metaPropMas, gapMeg=acumMP-metaPropMeg;
@@ -251,48 +285,30 @@ document.getElementById("acumBanner").innerHTML=`
   <div class="acum-item">
     <div class="acum-label">Total Realizado 2026</div>
     <div class="acum-val">${fmt(acumMP)}</div>
-    <div class="acum-note">${closedMonths[0].name} – ${closedMonths[closedMonths.length-1].name} (meses fechados)</div>
+    <div class="acum-note">${closedMonths[0].name} – ${closedMonths[closedMonths.length-1].name}</div>
   </div>
   <div class="acum-sep"></div>
   <div class="acum-item">
     <div class="acum-label">Crescimento vs 2025</div>
     <div class="acum-sub" style="color:${acumGrowth>=0?"var(--master)":"var(--minimo)"}">${acumGrowth>=0?"▲ ":"▼ "}${Math.abs(acumGrowth).toFixed(1)}%</div>
-    <div class="acum-note">${fmt(acumMP)} vs ${fmt(acum2025Closed)} — meses fechados</div>
+    <div class="acum-note">${fmt(acumMP)} vs ${fmt(acum2025Closed)}</div>
   </div>
   <div class="acum-sep"></div>
   <div class="acum-item" style="flex:1;min-width:280px;">
     <div class="acum-label" style="margin-bottom:8px;">% vs Meta Proporcional do Período</div>
     <div class="pct-grid">
-      <div class="pct-item">
-        <div class="pct-val td-minimo">${fmtPct(pctMin)}</div>
-        <div class="pct-meta">🔴 Mínimo</div>
-        <div class="pct-meta">${fmt(metaPropMin)}</div>
-      </div>
-      <div class="pct-item">
-        <div class="pct-val td-basica">${fmtPct(pctBas)}</div>
-        <div class="pct-meta">🟡 Básica</div>
-        <div class="pct-meta">${fmt(metaPropBas)}</div>
-      </div>
-      <div class="pct-item">
-        <div class="pct-val td-master">${fmtPct(pctMas)}</div>
-        <div class="pct-meta">🟢 Master</div>
-        <div class="pct-meta">${fmt(metaPropMas)}</div>
-      </div>
-      <div class="pct-item">
-        <div class="pct-val td-mega">${fmtPct(pctMeg)}</div>
-        <div class="pct-meta">🟤 Mega Master</div>
-        <div class="pct-meta">${fmt(metaPropMeg)}</div>
-      </div>
+      <div class="pct-item"><div class="pct-val td-minimo">${fmtPct(pctMin)}</div><div class="pct-meta">🔴 Mínimo</div><div class="pct-meta">${fmt(metaPropMin)}</div></div>
+      <div class="pct-item"><div class="pct-val td-basica">${fmtPct(pctBas)}</div><div class="pct-meta">🟡 Básica</div><div class="pct-meta">${fmt(metaPropBas)}</div></div>
+      <div class="pct-item"><div class="pct-val td-master">${fmtPct(pctMas)}</div><div class="pct-meta">🟢 Master</div><div class="pct-meta">${fmt(metaPropMas)}</div></div>
+      <div class="pct-item"><div class="pct-val td-mega">${fmtPct(pctMeg)}</div><div class="pct-meta">🟤 Mega Master</div><div class="pct-meta">${fmt(metaPropMeg)}</div></div>
     </div>
   </div>
   <div class="acum-sep"></div>
   <div class="acum-item">
     <div class="acum-label">Gap vs Master</div>
     <div class="acum-sub ${gapMas>=0?"gap-pos":"gap-neg"}">${gapMas>=0?"+":""}${fmt(Math.abs(gapMas)).replace("$","")}</div>
-    <div style="margin-top:6px;">
-      <div class="acum-label">Gap vs Mega Master</div>
-      <div class="acum-sub ${gapMeg>=0?"gap-pos":"gap-neg"}">${gapMeg>=0?"+":""}${fmt(Math.abs(gapMeg)).replace("$","")}</div>
-    </div>
+    <div style="margin-top:6px;"><div class="acum-label">Gap vs Mega Master</div>
+    <div class="acum-sub ${gapMeg>=0?"gap-pos":"gap-neg"}">${gapMeg>=0?"+":""}${fmt(Math.abs(gapMeg)).replace("$","")}</div></div>
   </div>
   <div class="acum-sep"></div>
   <div class="acum-item">
@@ -300,26 +316,23 @@ document.getElementById("acumBanner").innerHTML=`
     <div class="nivel-badge ${nivelAtual?nivelAtual.cls:""}" style="font-size:13px;padding:5px 12px;margin-top:4px;">${nivelAtual?nivelAtual.label:"—"}</div>
   </div>`;
 
-// REALIZADO MENSAL
-const realizadoGrid=document.getElementById("realizadoGrid");
+// ── CARDS MENSAIS ─────────────────────────────────────────────────────────────
+const realizadoGrid = document.getElementById("realizadoGrid");
 months.filter(m=>m.mp!==null).forEach(m=>{
   const g=m.growth;
-  const showGrowth = g!==null && m.mp!==null;
-  const gClass=showGrowth?(g>=0?"growth-pos":"growth-neg"):"";
-  const gLabel=showGrowth?(g>=0?"▲ ":"▼ ")+Math.abs(g*100).toFixed(1)+"% vs 2025":"";
-  const refVal = m.mp;
-  const barPct=Math.min(100,(refVal/m.meg)*100);
-  const barColor=refVal>=m.meg?"var(--mega)":refVal>=m.mas?"var(--master)":refVal>=m.bas?"var(--basica)":"var(--minimo)";
-  const nivel=getNivel(refVal,m.min,m.bas,m.mas,m.meg);
+  const showGrowth = g!==null;
+  const gClass = showGrowth?(g>=0?"growth-pos":"growth-neg"):"";
+  const gLabel = showGrowth?(g>=0?"▲ ":"▼ ")+Math.abs(g*100).toFixed(1)+"% vs 2025":"";
+  const barPct = Math.min(100,(m.mp/m.meg)*100);
+  const barColor = m.mp>=m.meg?"var(--mega)":m.mp>=m.mas?"var(--master)":m.mp>=m.bas?"var(--basica)":"var(--minimo)";
+  const nivel = getNivel(m.mp,m.min,m.bas,m.mas,m.meg);
   realizadoGrid.innerHTML+=`
     <div class="real-card">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:3px;">
         <div class="real-month">${m.name}</div>
         ${showGrowth?`<span class="real-growth ${gClass}">${gLabel}</span>`:""}
       </div>
-      <div class="real-amounts">
-        ${m.mp!==null?`<div><span class="real-amount">${fmt(m.mp)}</span></div>`:""}
-      </div>
+      <div><span class="real-amount">${fmt(m.mp)}</span></div>
       <div class="real-progress"><div class="real-bar" style="width:${barPct}%;background:${barColor}"></div></div>
       <div class="meta-row">
         <div class="meta-line"><span class="meta-line-label">🔴 Mínimo</span><span class="meta-line-val td-minimo">${fmt(m.min)}</span></div>
@@ -330,32 +343,174 @@ months.filter(m=>m.mp!==null).forEach(m=>{
     </div>`;
 });
 
-// TRIMESTRES
-const quarterGrid=document.getElementById("quarterGrid");
+// ── TRIMESTRES ───────────────────────────────────────────────────────────────
+const quarterGrid = document.getElementById("quarterGrid");
 quarterLabels.forEach((q,qi)=>{
-  const qm=quartersMeta[qi];
-  const real=q.mIdx.reduce((s,i)=>months[i].mp!==null?s+months[i].mp:s,0);
-  const hasReal=real>0;
+  const qm = quartersMeta[qi];
+  const real = q.mIdx.reduce((s,i)=>months[i].mp!==null?s+months[i].mp:s,0);
+  const hasReal = real>0;
   function mBlock(name,cls,target){
-    const p=hasReal?(real/target*100):null;
-    const gap=hasReal?(real-target):null;
-    const barW=hasReal?Math.min(100,p):0;
-    const bC=cls==="td-minimo"?"var(--minimo)":cls==="td-basica"?"var(--basica)":cls==="td-master"?"var(--master)":"var(--mega)";
-    const gC=gap===null?"":(gap>=0?"gap-pos":"gap-neg");
-    const gS=gap===null?"aguardando":(gap>=0?"+":"")+fmt(Math.abs(gap)).replace("$","")+" ("+(gap>=0?"+":"")+fmtPct(gap/target*100)+")";
+    const p = hasReal?(real/target*100):null;
+    const gap = hasReal?(real-target):null;
+    const barW = hasReal?Math.min(100,p):0;
+    const bC = cls==="td-minimo"?"var(--minimo)":cls==="td-basica"?"var(--basica)":cls==="td-master"?"var(--master)":"var(--mega)";
+    const gC = gap===null?"":(gap>=0?"gap-pos":"gap-neg");
+    const gS = gap===null?"aguardando":(gap>=0?"+":"")+fmt(Math.abs(gap)).replace("$","")+" ("+(gap>=0?"+":"")+fmtPct(gap/target*100)+")";
     return `<div class="q-meta-block"><div class="q-meta-header"><span class="q-meta-name ${cls}">${name}</span><span class="q-meta-val ${cls}">${fmt(target)}</span></div><div class="q-meta-bar-wrap"><div class="q-meta-bar" style="width:${barW}%;background:${bC}"></div></div><div class="q-meta-footer"><span class="q-meta-pct ${cls}">${hasReal?fmtPct(p):"—"}</span><span class="${gC}">${gS}</span></div></div>`;
   }
   quarterGrid.innerHTML+=`<div class="q-card"><div class="q-label">${q.label}</div><div class="q-months-label">${q.months}</div><div class="q-acumulado">${hasReal?fmt(real):"Sem dados"}<span class="q-acumulado-label">acumulado</span></div><hr class="q-divider">${mBlock("🔴 Mínimo","td-minimo",qm.min)}${mBlock("🟡 Básica","td-basica",qm.bas)}${mBlock("🟢 Master","td-master",qm.mas)}${mBlock("🟤 Mega Master","td-mega",qm.meg)}</div>`;
 });
 
-// TABELA
-const body=document.getElementById("monthlyBody");
+// ── ACOMPANHAMENTO SEMANAL ────────────────────────────────────────────────────
+const acGrid = document.getElementById("acGrid");
+
+// Merge: acompanhamento (metas semanais + real) + schedule (sched + bat + cleans)
+acData.forEach((acMonth, mi)=>{
+  if(!acMonth.weeks || acMonth.weeks.length===0) return; // Jan-Jun não têm semanas
+
+  const monthMeta = months.find(m=>m.name===acMonth.name);
+  const schedMonth = schedData.find(s=>s.name===acMonth.name)||{weeks:[]};
+  const nivel = monthMeta && acMonth.real ? getNivel(acMonth.real, monthMeta.min, monthMeta.bas, monthMeta.mas, monthMeta.meg) : null;
+
+  // Semanas com real: quantas fechadas?
+  const weeksWithReal = acMonth.weeks.filter(w=>w.real!==null);
+  const acumWeeks = weeksWithReal.reduce((s,w)=>s+w.real,0);
+
+  const headerReal = acMonth.real
+    ? `<span class="ac-month-real-label">Total:</span><span class="ac-month-real">${fmt(acMonth.real)}</span>`
+    : weeksWithReal.length>0
+      ? `<span class="ac-month-real-label">Acum. semanas:</span><span class="ac-month-real">${fmt(acumWeeks)}</span>`
+      : `<span style="color:var(--muted);font-size:12px;">Sem realizado</span>`;
+
+  const nivelBadge = nivel
+    ? `<span class="nivel-badge ${nivel.cls} ac-month-nivel">${nivel.label}</span>`
+    : ``;
+
+  const blockId = `ac-body-${mi}`;
+
+  // Linhas das semanas
+  let weeksRows = '';
+  acMonth.weeks.forEach((w,wi)=>{
+    const sw = schedMonth.weeks.find(s=>s.label===w.label)||null;
+    const hasReal = w.real !== null;
+    const hasSched = sw && sw.sched !== null;
+    const pct_mas = hasReal && w.mas>0 ? (w.real/w.mas)*100 : (hasSched && w.mas>0 ? (sw.sched/w.mas)*100 : null);
+    const barW = pct_mas !== null ? Math.min(100, pct_mas) : 0;
+    const barColor = !hasReal && !hasSched ? 'var(--muted)'
+      : (w.real||sw?.sched||0) >= w.meg ? 'var(--mega)'
+      : (w.real||sw?.sched||0) >= w.mas ? 'var(--master)'
+      : (w.real||sw?.sched||0) >= w.bas ? 'var(--basica)'
+      : 'var(--minimo)';
+
+    const realCell = hasReal
+      ? `<td class="w-real-val">${fmt(w.real)}</td>`
+      : `<td class="w-pending">—</td>`;
+
+    const schedCell = hasSched
+      ? `<td><span class="sched-tag">${fmt(sw.sched)}</span></td>`
+      : `<td class="w-pending">—</td>`;
+
+    const batMasCell = sw && sw.bat_mas
+      ? `<td><span class="${sw.bat_mas==='SIM'?'bat-sim':'bat-nao'}">${sw.bat_mas}</span></td>`
+      : `<td class="w-pending">—</td>`;
+
+    const batMegCell = sw && sw.bat_meg
+      ? `<td><span class="${sw.bat_meg==='SIM'?'bat-sim':'bat-nao'}">${sw.bat_meg}</span></td>`
+      : `<td class="w-pending">—</td>`;
+
+    const cleansMas = sw && sw.cleans_mas !== null ? Math.abs(Math.ceil(sw.cleans_mas)) : null;
+    const cleansMeg = sw && sw.cleans_meg !== null ? Math.abs(Math.ceil(sw.cleans_meg)) : null;
+
+    const cleansMasCell = cleansMas !== null
+      ? `<td style="font-family:'DM Mono',monospace;font-size:12px;">${sw.bat_mas==='SIM'?'✅':cleansMas+' deep cleans'}</td>`
+      : `<td class="w-pending">—</td>`;
+
+    const cleansMegCell = cleansMeg !== null
+      ? `<td style="font-family:'DM Mono',monospace;font-size:12px;">${sw.bat_meg==='SIM'?'✅':cleansMeg+' deep cleans'}</td>`
+      : `<td class="w-pending">—</td>`;
+
+    const progressBar = `<div class="w-pct-bar"><div class="w-pct-fill" style="width:${barW}%;background:${barColor}"></div></div>`;
+
+    weeksRows += `<tr>
+      <td class="w-label">${w.label}</td>
+      <td class="td-minimo" style="font-family:'DM Mono',monospace;">${fmt(w.min)}</td>
+      <td class="td-master" style="font-family:'DM Mono',monospace;">${fmt(w.mas)}</td>
+      <td class="td-mega" style="font-family:'DM Mono',monospace;">${fmt(w.meg)}</td>
+      ${realCell}
+      ${schedCell}
+      <td>${progressBar} <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">${pct_mas!==null?pct_mas.toFixed(0)+'%':''}</span></td>
+      ${batMasCell}
+      ${cleansMasCell}
+      ${batMegCell}
+      ${cleansMegCell}
+    </tr>`;
+  });
+
+  acGrid.innerHTML += `
+    <div class="ac-month-block animate">
+      <div class="ac-month-header" onclick="toggleAc('${blockId}',this)">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <span class="ac-month-name">${acMonth.name}</span>
+          ${nivelBadge}
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div>${headerReal}</div>
+          <span class="ac-month-chevron open" id="chev-${blockId}">▼</span>
+        </div>
+      </div>
+      <div class="ac-month-body" id="${blockId}">
+        <table class="ac-weeks-table">
+          <thead>
+            <tr>
+              <th>Semana</th>
+              <th>🔴 Mínimo</th>
+              <th>🟢 Master</th>
+              <th>🟤 Mega</th>
+              <th>Realizado</th>
+              <th>Schedule Atual</th>
+              <th>% vs Master</th>
+              <th>Bateu Master?</th>
+              <th>Deep Cleans p/ Master</th>
+              <th>Bateu Mega?</th>
+              <th>Deep Cleans p/ Mega</th>
+            </tr>
+          </thead>
+          <tbody>${weeksRows}</tbody>
+        </table>
+      </div>
+    </div>`;
+});
+
+function toggleAc(id, header){
+  const body = document.getElementById(id);
+  const chev = document.getElementById('chev-'+id);
+  const isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : '';
+  chev.classList.toggle('open', !isOpen);
+}
+
+// ── TABELA DETALHADA ──────────────────────────────────────────────────────────
+const body = document.getElementById("monthlyBody");
 months.forEach(m=>{
-  const refVal = m.mp;
-  const nivel=refVal!==null?getNivel(refVal,m.min,m.bas,m.mas,m.meg):null;
-  const nivelCell=nivel?`<span class="nivel-badge ${nivel.cls}">${nivel.label}</span>`:`<span class="nivel-vazio">—</span>`;
-  const growthCell = m.growth!==null ? `<span style="color:${m.growth>=0?'var(--master)':'var(--minimo)'};font-family:'DM Mono',monospace;font-weight:700;">${m.growth>=0?'▲ ':'▼ '}${Math.abs(m.growth*100).toFixed(1)}%</span>` : `<span class="nivel-vazio">—</span>`;
-  body.innerHTML+=`<tr><td>${m.name}</td><td class="td-minimo">${fmt(m.min)}</td><td class="td-basica">${fmt(m.bas)}</td><td class="td-master">${fmt(m.mas)}</td><td class="td-mega">${fmt(m.meg)}</td><td class="td-2025">${fmt(m.r2025)}</td><td class="td-mp">${fmt(m.mp)}</td><td>${growthCell}</td><td>${nivelCell}</td><td class="td-qb">${fmt(m.qb)}</td></tr>`;
+  const nivel = m.mp!==null ? getNivel(m.mp,m.min,m.bas,m.mas,m.meg) : null;
+  const nivelCell = nivel
+    ? `<span class="nivel-badge ${nivel.cls}">${nivel.label}</span>`
+    : `<span class="nivel-vazio">—</span>`;
+  const growthCell = m.growth!==null
+    ? `<span style="color:${m.growth>=0?'var(--master)':'var(--minimo)'};font-family:'DM Mono',monospace;font-weight:700;">${m.growth>=0?'▲ ':'▼ '}${Math.abs(m.growth*100).toFixed(1)}%</span>`
+    : `<span class="nivel-vazio">—</span>`;
+  body.innerHTML+=`<tr>
+    <td>${m.name}</td>
+    <td class="td-minimo">${fmt(m.min)}</td>
+    <td class="td-basica">${fmt(m.bas)}</td>
+    <td class="td-master">${fmt(m.mas)}</td>
+    <td class="td-mega">${fmt(m.meg)}</td>
+    <td class="td-2025">${fmt(m.r2025)}</td>
+    <td class="td-mp">${fmt(m.mp)}</td>
+    <td>${growthCell}</td>
+    <td>${nivelCell}</td>
+    <td class="td-qb">${fmt(m.qb)}</td>
+  </tr>`;
 });
 
 document.getElementById("ts").textContent="Atualizado: "+new Date().toLocaleDateString("pt-BR",{day:"2-digit",month:"short",year:"numeric"});
