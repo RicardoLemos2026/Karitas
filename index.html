@@ -6,6 +6,7 @@
 <title>Karita's Cleaning Service — Dashboard 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --bg:#f6f5fb;--surface:#fff;--surface2:#efeef7;--border:rgba(20,10,40,0.09);
   --text:#211a35;--muted:#7c7693;
@@ -208,9 +209,96 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border);displ
 @media(max-width:1200px){.realizado-grid{grid-template-columns:repeat(2,1fr);}.sched-weeks-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:900px){.annual-grid{grid-template-columns:repeat(2,1fr);}.quarter-grid{grid-template-columns:repeat(2,1fr);}.sched-weeks-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:600px){.annual-grid,.realizado-grid,.quarter-grid{grid-template-columns:1fr;}.sched-weeks-grid{grid-template-columns:1fr;}.acum-banner,.pct-grid,.sched-kpis{flex-direction:column;}header{flex-direction:column;gap:14px;text-align:center;}.header-right{text-align:center;}}
+
+
+/* ── SISTEMA DE ABAS ── */
+.tab-nav{display:flex;gap:0;margin-bottom:28px;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;padding:4px;gap:4px;}
+.tab-btn{flex:1;padding:10px 18px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);border-radius:9px;transition:all .2s;}
+.tab-btn:hover{background:var(--surface2);color:var(--text);}
+.tab-btn.active{background:var(--pink);color:#fff;}
+.tab-content{display:none;animation:fadeUp .3s ease both;}
+.tab-content.active-tab{display:block;}
+
+/* ── PLANEJAMENTO ── */
+.hero{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:16px;}
+.hero-top{background:linear-gradient(100deg,#0e0820 0%,#1c1040 100%);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.hero-week{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:40px;color:#fff;line-height:1;}
+.hero-week em{color:var(--pink);font-style:normal;}
+.hero-month-label{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.4);margin-top:4px;}
+.hero-right{text-align:right;}
+.hero-sched-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:4px;}
+.hero-sched-val{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:30px;color:var(--teal);}
+.hero-sched-sub{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);margin-top:3px;}
+.metas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
+.meta-cell{background:var(--surface);padding:16px 20px;}
+.mc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;}
+.mc-val{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:24px;line-height:1;}
+.mc-note{font-size:10px;color:var(--muted);margin-top:3px;}
+.mc-min .mc-label,.mc-min .mc-val{color:var(--minimo);}
+.mc-bas .mc-label,.mc-bas .mc-val{color:var(--basica);}
+.mc-mas .mc-label,.mc-mas .mc-val{color:var(--master);}
+.mc-meg .mc-label,.mc-meg .mc-val{color:var(--mega);}
+.mes-strip{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 22px;margin-bottom:16px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;}
+.ms-item{}
+.ms-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.ms-val{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:19px;line-height:1;}
+.ms-sep{width:1px;background:var(--border);align-self:stretch;min-height:30px;}
+.ms-gap-pos{color:var(--master);}.ms-gap-neg{color:var(--minimo);}
+.plan-main-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.ctx-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;}
+.ctx-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.svm-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.svm-lbl{font-size:11px;font-weight:600;width:92px;flex-shrink:0;}
+.svm-bar-wrap{flex:1;background:var(--surface2);border-radius:4px;height:8px;overflow:hidden;}
+.svm-bar{height:100%;border-radius:4px;}
+.svm-val{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;width:76px;text-align:right;}
+.gap-callout{margin-top:14px;padding:13px 16px;border-radius:10px;display:flex;align-items:flex-start;gap:11px;}
+.gap-callout.neg{background:var(--minimo-bg);border:1px solid rgba(192,57,43,0.15);}
+.gap-callout.pos{background:var(--master-bg);border:1px solid rgba(30,125,70,0.15);}
+.gap-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+.gap-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.gap-value{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;line-height:1;}
+.gap-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.dc-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:14px;}
+.dc-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.dc-block{border-radius:12px;padding:16px 18px;}
+.dc-block.master{background:var(--master-bg);border:1px solid rgba(30,125,70,0.15);}
+.dc-block.mega{background:var(--mega-bg);border:1px solid rgba(160,114,13,0.15);}
+.dc-block.done{background:rgba(30,125,70,0.05);border:1px dashed rgba(30,125,70,0.2);}
+.dc-block-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.dc-block-name{font-size:12px;font-weight:700;}
+.dc-block.master .dc-block-name{color:var(--master);}
+.dc-block.mega .dc-block-name{color:var(--mega);}
+.dc-block.done .dc-block-name{color:var(--master);}
+.dc-ok-badge{background:var(--master-bg);color:var(--master);font-family:'DM Mono',monospace;font-size:10px;font-weight:700;padding:2px 9px;border-radius:20px;border:1px solid rgba(30,125,70,0.2);}
+.dc-ok-msg{font-family:'DM Mono',monospace;font-size:12px;color:var(--master);font-weight:600;}
+.dc-num-row{display:flex;align-items:baseline;gap:8px;}
+.dc-num{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:56px;line-height:1;color:var(--master);}
+.dc-unit{font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);line-height:1.4;}
+.dc-detail{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap;}
+.dc-det-item{}
+.dc-det-label{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;}
+.dc-det-val{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;}
+.hist-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:16px;}
+.hist-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.hist-row{display:grid;grid-template-columns:80px 90px 1fr 95px 95px;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);}
+.hist-row:last-child{border-bottom:none;}
+.hist-week{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--muted);}
+.hist-real{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--pink);}
+.hist-bar-wrap{background:var(--surface2);border-radius:3px;height:6px;overflow:hidden;}
+.hist-bar{height:100%;border-radius:3px;}
+.hist-badge{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;text-align:center;}
+.hist-badge.green{background:var(--master-bg);color:var(--master);}
+.hist-badge.red{background:var(--minimo-bg);color:var(--minimo);}
+@media(max-width:800px){.plan-main-grid{grid-template-columns:1fr;}.metas-grid{grid-template-columns:repeat(2,1fr);}.hist-row{grid-template-columns:70px 80px 1fr 85px;}.hist-row>div:last-child{display:none;}}
+
 </style>
 </head>
 <body>
+<div class="page">
+
+
 <div class="page">
 
 <header class="animate">
@@ -221,6 +309,16 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border);displ
     <div class="analyst">Acompanhamento de Faturamento</div>
   </div>
 </header>
+
+<!-- NAVEGAÇÃO POR ABAS -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('dash', this)">📊 Dashboard Geral</button>
+  <button class="tab-btn" onclick="switchTab('plan', this)">📋 Planejamento Semanal</button>
+</div>
+
+<!-- ABA: DASHBOARD GERAL -->
+<div id="tab-dash" class="tab-content active-tab">
+
 
 <div class="legend-bar animate a1">
   <div class="legend-item l-min"><div class="legend-dot"></div> Meta Mínimo</div>
@@ -273,6 +371,155 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border);displ
   </table>
 </div>
 
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- ABA: PLANEJAMENTO SEMANAL                                   -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="tab-plan" class="tab-content" style="display:none;">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-top">
+      <div>
+        <div class="hero-eyebrow">Semana em planejamento</div>
+        <div class="hero-week"><em>19 a 25</em> de Julho</div>
+        <div class="hero-month-label">Julho 2026 &nbsp;·&nbsp; 2 semanas restantes no mês</div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-sched-label">Schedule desta semana</div>
+        <div class="hero-sched-val">$31,047</div>
+        <div class="hero-sched-sub">faturamento projetado no Job History</div>
+      </div>
+    </div>
+    <div class="metas-grid">
+      <div class="meta-cell mc-min"><div class="mc-label">🔴 Mínimo</div><div class="mc-val">$30,296</div><div class="mc-note">piso da semana</div></div>
+      <div class="meta-cell mc-bas"><div class="mc-label">🟡 Básica</div><div class="mc-val">$33,326</div><div class="mc-note">meta intermediária</div></div>
+      <div class="meta-cell mc-mas"><div class="mc-label">🟢 Master</div><div class="mc-val">$36,658</div><div class="mc-note">meta principal</div></div>
+      <div class="meta-cell mc-meg"><div class="mc-label">🟤 Mega Master</div><div class="mc-val">$40,324</div><div class="mc-note">meta de excelência</div></div>
+    </div>
+  </div>
+
+  <!-- RESUMO DO MÊS -->
+  <div class="mes-strip">
+    <div class="ms-item"><div class="ms-label">Realizado no mês até agora</div><div class="ms-val" style="color:var(--pink);">$99,882</div></div>
+    <div class="ms-sep"></div>
+    <div class="ms-item"><div class="ms-label">Schedule total do mês</div><div class="ms-val" style="color:var(--teal);">$160,137</div></div>
+    <div class="ms-sep"></div>
+    <div class="ms-item"><div class="ms-label">Meta Master do mês</div><div class="ms-val" style="color:var(--green);">$162,345</div></div>
+    <div class="ms-sep"></div>
+    <div class="ms-item"><div class="ms-label">Gap mês vs Master</div><div class="ms-val ms-gap-neg">$62,462</div></div>
+    <div class="ms-sep"></div>
+    <div class="ms-item"><div class="ms-label">Meta Mega do mês</div><div class="ms-val" style="color:var(--mega);">$178,579</div></div>
+    <div class="ms-sep"></div>
+    <div class="ms-item"><div class="ms-label">Gap mês vs Mega</div><div class="ms-val ms-gap-neg">$78,697</div></div>
+  </div>
+
+  <!-- PAINEL PRINCIPAL -->
+  <div class="plan-main-grid">
+
+    <!-- Schedule vs Metas -->
+    <div class="ctx-card">
+      <div class="ctx-title">Schedule desta semana vs Metas</div>
+      <div class="svm-row">
+        <span class="svm-lbl" style="color:var(--teal);">Schedule</span>
+        <div class="svm-bar-wrap"><div class="svm-bar" style="width:77.0%;background:#b7860a;"></div></div>
+        <span class="svm-val" style="color:var(--teal);">$31,047</span>
+      </div>
+      <div class="svm-row">
+        <span class="svm-lbl" style="color:var(--green);">Master</span>
+        <div class="svm-bar-wrap"><div class="svm-bar" style="width:90.9%;background:var(--green);opacity:0.4;"></div></div>
+        <span class="svm-val" style="color:var(--green);">$36,658</span>
+      </div>
+      <div class="svm-row">
+        <span class="svm-lbl" style="color:var(--mega);">Mega Master</span>
+        <div class="svm-bar-wrap"><div class="svm-bar" style="width:100%;background:var(--mega);opacity:0.3;"></div></div>
+        <span class="svm-val" style="color:var(--mega);">$40,324</span>
+      </div>
+      <div class="gap-callout neg">
+        <div class="gap-icon">⚠️</div>
+        <div>
+          <div class="gap-label">Gap schedule vs Master</div>
+          <div class="gap-value" style="color:var(--red);">$5,611</div>
+          <div class="gap-sub">Faltam $5,611 para bater o Master</div>
+        </div>
+      </div>
+      <div class="gap-callout neg" style="margin-top:8px;">
+        <div class="gap-icon">🎯</div>
+        <div>
+          <div class="gap-label">Gap schedule vs Mega Master</div>
+          <div class="gap-value" style="color:var(--red);">$9,277</div>
+          <div class="gap-sub">Faltam $9,277 para bater o Mega Master</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Cleans -->
+    <div class="dc-card">
+      <div class="dc-title">Faxinas adicionais necessárias esta semana</div>
+      <div class="dc-block master">
+        <div class="dc-block-header">
+          <span class="dc-block-name">🟢 Para bater o Master</span>
+          
+        </div>
+        
+      <div class="dc-num-row">
+        <span class="dc-num">12</span>
+        <span class="dc-unit">deep cleans<br>a mais</span>
+      </div>
+      <div class="dc-detail">
+        <div class="dc-det-item"><div class="dc-det-label">Ticket médio</div><div class="dc-det-val" style="color:var(--green);">$500</div></div>
+        <div class="dc-det-item"><div class="dc-det-label">Falta no schedule</div><div class="dc-det-val" style="color:var(--red);">$5,611</div></div>
+        <div class="dc-det-item"><div class="dc-det-label">Meta Master</div><div class="dc-det-val" style="color:var(--green);">$36,658</div></div>
+      </div>
+      </div>
+      <div class="dc-block mega">
+        <div class="dc-block-header">
+          <span class="dc-block-name">🟤 Para bater o Mega Master</span>
+          
+        </div>
+        
+      <div class="dc-num-row">
+        <span class="dc-num" style="color:var(--mega);">19</span>
+        <span class="dc-unit">deep cleans<br>a mais</span>
+      </div>
+      <div class="dc-detail">
+        <div class="dc-det-item"><div class="dc-det-label">Ticket médio</div><div class="dc-det-val" style="color:var(--mega);">$500</div></div>
+        <div class="dc-det-item"><div class="dc-det-label">Falta no schedule</div><div class="dc-det-val" style="color:var(--red);">$9,277</div></div>
+        <div class="dc-det-item"><div class="dc-det-label">Meta Mega</div><div class="dc-det-val" style="color:var(--mega);">$40,324</div></div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hist-card"><div class="hist-title">Semanas fechadas neste mês</div>
+      <div class="hist-row">
+        <div class="hist-week">1 a 4</div>
+        <div class="hist-real">$24,168</div>
+        <div class="hist-bar-wrap"><div class="hist-bar" style="width:100.0%;background:#1e7d46;"></div></div>
+        <div class="hist-badge green">✅ Master</div>
+        <div class="hist-badge green">✅ Mega</div>
+      </div>
+      <div class="hist-row">
+        <div class="hist-week">5 a 11</div>
+        <div class="hist-real">$35,446</div>
+        <div class="hist-bar-wrap"><div class="hist-bar" style="width:87.9%;background:#c0392b;"></div></div>
+        <div class="hist-badge red">✗ Master</div>
+        <div class="hist-badge red">✗ Mega</div>
+      </div>
+      <div class="hist-row">
+        <div class="hist-week">12 a 18</div>
+        <div class="hist-real">$40,269</div>
+        <div class="hist-bar-wrap"><div class="hist-bar" style="width:99.9%;background:#1e7d46;"></div></div>
+        <div class="hist-badge green">✅ Master</div>
+        <div class="hist-badge red">✗ Mega</div>
+      </div></div>
+
+</div><!-- /tab-plan -->
+
+
 <footer class="animate">
   <span>Karita's Cleaning Service © 2026</span>
   <span>Dashboard de Acompanhamento Gerencial</span>
@@ -281,11 +528,26 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border);displ
 </div>
 
 <script>
+
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(function(el) {
+    el.style.display = 'none';
+    el.classList.remove('active-tab');
+  });
+  document.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  var target = document.getElementById('tab-' + id);
+  target.style.display = 'block';
+  target.classList.add('active-tab');
+  btn.classList.add('active');
+}
+
 const fmt = v => (v===null||v===undefined||isNaN(v))?"—":"$"+Number(v).toLocaleString("en-US",{minimumFractionDigits:0,maximumFractionDigits:0});
 const fmtPct = v => (v===null||v===undefined||isNaN(v))?"—":v.toFixed(1)+"%";
 const fmtPctRaw = v => v===null?"—":(v*100).toFixed(1)+"%";
 
-const DATA = {"months": [{"name": "Janeiro", "min": 109399.875, "bas": 120339.8625, "mas": 132373.8488, "meg": 145611.2336, "r2025": 84153.75, "mp": 111077.06, "qb": 99741.9, "growth": 0.3199300091}, {"name": "Fevereiro", "min": 106428.296, "bas": 117071.1256, "mas": 128778.2382, "meg": 141656.062, "r2025": 81867.92, "mp": 125405.25, "qb": 109367.31, "growth": 0.5317996353}, {"name": "Março", "min": 106503.8, "bas": 117154.18, "mas": 128869.598, "meg": 141756.5578, "r2025": 81926.0, "mp": 132595.94, "qb": 122521.95, "growth": 0.6184842419}, {"name": "Abril", "min": 132744.586, "bas": 146019.0446, "mas": 160620.9491, "meg": 176683.044, "r2025": 102111.22, "mp": 137126.22, "qb": 117477.3, "growth": 0.3429104069}, {"name": "Maio", "min": 132494.856, "bas": 145744.3416, "mas": 160318.7758, "meg": 176350.6533, "r2025": 101919.12, "mp": 163832.24, "qb": 135096.56, "growth": 0.607473063}, {"name": "Junho", "min": 119732.678, "bas": 131705.9458, "mas": 144876.5404, "meg": 159364.1944, "r2025": 92102.06, "mp": 137927.92, "qb": null, "growth": 0.4975552121}, {"name": "Julho", "min": 134169.1, "bas": 147586.01, "mas": 162344.611, "meg": 178579.0721, "r2025": 103207.0, "mp": 59613.47, "qb": null, "growth": -0.4223892759}, {"name": "Agosto", "min": 145591.329, "bas": 160150.4619, "mas": 176165.5081, "meg": 193782.0589, "r2025": 111993.33, "mp": null, "qb": null, "growth": null}, {"name": "Setembro", "min": 140146.149, "bas": 154160.7639, "mas": 169576.8403, "meg": 186534.5243, "r2025": 107804.73, "mp": null, "qb": null, "growth": null}, {"name": "Outubro", "min": 162827.873, "bas": 179110.6603, "mas": 197021.7263, "meg": 216723.899, "r2025": 125252.21, "mp": null, "qb": null, "growth": null}, {"name": "Novembro", "min": 128664.549, "bas": 141531.0039, "mas": 155684.1043, "meg": 171252.5147, "r2025": 98972.73, "mp": null, "qb": null, "growth": null}, {"name": "Dezembro", "min": 151229.897, "bas": 166352.8867, "mas": 182988.1754, "meg": 201286.9929, "r2025": 116330.69, "mp": null, "qb": null, "growth": null}], "quarters": [{"min": 322331.971, "bas": 354565.1681, "mas": 390021.6849, "meg": 429023.8534, "r2025": 247947.67}, {"min": 384972.12, "bas": 423469.332, "mas": 465816.2652, "meg": 512397.8917, "r2025": 296132.4}, {"min": 419906.578, "bas": 461897.2358, "mas": 508086.9594, "meg": 558895.6553, "r2025": 323005.06}, {"min": 442722.319, "bas": 486994.5509, "mas": 535694.006, "meg": 589263.4066, "r2025": 340555.63}], "annual": {"min": 1569932.988, "bas": 1726926.287, "mas": 1899618.915, "meg": 2089580.807, "r2025": 1207640.76}, "acompanhamento": [{"name": "Janeiro", "real": 111077.06, "weeks": []}, {"name": "Fevereiro", "real": 125405.25, "weeks": []}, {"name": "Março", "real": 132595.94, "weeks": []}, {"name": "Abril", "real": 137126.22, "weeks": []}, {"name": "Maio", "real": 163832.24, "weeks": []}, {"name": "Junho", "real": 137927.92, "weeks": []}, {"name": "Julho", "real": 59613.47, "weeks": [{"label": "1 a 4", "min": 17312.14194, "bas": 19043.35613, "mas": 20947.69161, "meg": 23042.46065, "real": 24167.86}, {"label": "5 a 11", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "real": 35445.61}, {"label": "12 a 18", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "real": null}, {"label": "19 a 25", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "real": null}, {"label": "26 a 31", "min": 25968.2129, "bas": 28565.03419, "mas": 31421.53742, "meg": 34563.69097, "real": null}]}, {"name": "Agosto", "real": null, "weeks": [{"label": "1 a 8", "min": 37571.95613, "bas": 41329.15097, "mas": 45462.0671, "meg": 50008.27355, "real": null}, {"label": "9 a 15", "min": 32875.46161, "bas": 36163.0071, "mas": 39779.30871, "meg": 43757.23935, "real": null}, {"label": "16 a 22", "min": 32875.46161, "bas": 36163.0071, "mas": 39779.30871, "meg": 43757.23935, "real": null}, {"label": "23 a 31", "min": 42268.45065, "bas": 46495.29484, "mas": 51144.82548, "meg": 56259.30774, "real": null}]}, {"name": "Setembro", "real": null, "weeks": [{"label": "1 a 5", "min": 23357.69167, "bas": 25693.46, "mas": 28262.80667, "meg": 31089.08667, "real": null}, {"label": "6 a 12", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "real": null}, {"label": "13 a 19", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "real": null}, {"label": "20 a 26", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "real": null}, {"label": "27 a 30", "min": 18686.15333, "bas": 20554.768, "mas": 22610.24533, "meg": 24871.26933, "real": null}]}, {"name": "Outubro", "real": null, "weeks": [{"label": "1 a 10", "min": 52525.11935, "bas": 57777.63226, "mas": 63555.39677, "meg": 69910.93548, "real": null}, {"label": "11 a 17", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "real": null}, {"label": "18 a 24", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "real": null}, {"label": "25 a 31", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "real": null}]}, {"name": "Novembro", "real": null, "weeks": [{"label": "1 a 7", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "real": null}, {"label": "8 a 14", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "real": null}, {"label": "15 a 21", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "real": null}, {"label": "22 a 30", "min": 38599.365, "bas": 42459.3, "mas": 46705.23, "meg": 51375.753, "real": null}]}, {"name": "Dezembro", "real": null, "weeks": [{"label": "1 a 5", "min": 24391.91935, "bas": 26831.11129, "mas": 29514.22258, "meg": 32465.64355, "real": null}, {"label": "6 a 12", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "real": null}, {"label": "13 a 19", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "real": null}, {"label": "20 a 26", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "real": null}, {"label": "27 a 31", "min": 24391.91935, "bas": 26831.11129, "mas": 29514.22258, "meg": 32465.64355, "real": null}]}], "schedule": [{"name": "Julho", "sched_atual_mes": 144249.37, "weeks": [{"label": "1 a 4", "min": 17312.14194, "bas": 19043.35613, "mas": 20947.69161, "meg": 23042.46065, "sched": 24167.86, "gap_mas": -3220.168387, "pct_mas": 1.15372426, "ticket_mas": 500.0, "cleans_mas": -7.0, "bat_mas": "SIM", "gap_meg": -1125.399355, "pct_meg": 1.048840242, "ticket_meg": 500.0, "cleans_meg": -3.0, "bat_meg": "SIM"}, {"label": "5 a 11", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "sched": 35445.61, "gap_mas": 1212.850323, "pct_mas": 0.9669148592, "ticket_mas": 500.0, "cleans_mas": 3.0, "bat_mas": "NÃO", "gap_meg": 4878.696129, "pct_meg": 0.8790135133, "ticket_meg": 500.0, "cleans_meg": 10.0, "bat_meg": "NÃO"}, {"label": "12 a 18", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "sched": 28614.0, "gap_mas": 8044.460323, "pct_mas": 0.7805565141, "ticket_mas": 500.0, "cleans_mas": 17.0, "bat_mas": "NÃO", "gap_meg": 11710.30613, "pct_meg": 0.7095968349, "ticket_meg": 500.0, "cleans_meg": 24.0, "bat_meg": "NÃO"}, {"label": "19 a 25", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "sched": 28902.0, "gap_mas": 7756.460323, "pct_mas": 0.7884128178, "ticket_mas": 500.0, "cleans_mas": 16.0, "bat_mas": "NÃO", "gap_meg": 11422.30613, "pct_meg": 0.7167389293, "ticket_meg": 500.0, "cleans_meg": 23.0, "bat_meg": "NÃO"}, {"label": "26 a 31", "min": 25968.2129, "bas": 28565.03419, "mas": 31421.53742, "meg": 34563.69097, "sched": 27119.9, "gap_mas": 4301.637419, "pct_mas": 0.8630990788, "ticket_mas": 500.0, "cleans_mas": 9.0, "bat_mas": "NÃO", "gap_meg": 7443.790968, "pct_meg": 0.7846355305, "ticket_meg": 500.0, "cleans_meg": 15.0, "bat_meg": "NÃO"}]}, {"name": "Agosto", "sched_atual_mes": null, "weeks": [{"label": "1 a 8", "min": 37571.95613, "bas": 41329.15097, "mas": 45462.0671, "meg": 50008.27355, "sched": null, "gap_mas": 45462.0671, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 91.0, "bat_mas": "NÃO", "gap_meg": 50008.27355, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 77.0, "bat_meg": "NÃO"}, {"label": "9 a 15", "min": 32875.46161, "bas": 36163.0071, "mas": 39779.30871, "meg": 43757.23935, "sched": null, "gap_mas": 39779.30871, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 80.0, "bat_mas": "NÃO", "gap_meg": 43757.23935, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 68.0, "bat_meg": "NÃO"}, {"label": "16 a 22", "min": 32875.46161, "bas": 36163.0071, "mas": 39779.30871, "meg": 43757.23935, "sched": null, "gap_mas": 39779.30871, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 80.0, "bat_mas": "NÃO", "gap_meg": 43757.23935, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 68.0, "bat_meg": "NÃO"}, {"label": "23 a 31", "min": 42268.45065, "bas": 46495.29484, "mas": 51144.82548, "meg": 56259.30774, "sched": null, "gap_mas": 51144.82548, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 103.0, "bat_mas": "NÃO", "gap_meg": 56259.30774, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 87.0, "bat_meg": "NÃO"}]}, {"name": "Setembro", "sched_atual_mes": null, "weeks": [{"label": "1 a 5", "min": 23357.69167, "bas": 25693.46, "mas": 28262.80667, "meg": 31089.08667, "sched": null, "gap_mas": 28262.80667, "pct_mas": 0.0, "ticket_mas": 650.0, "cleans_mas": 44.0, "bat_mas": "NÃO", "gap_meg": 31089.08667, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 48.0, "bat_meg": "NÃO"}, {"label": "6 a 12", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "sched": null, "gap_mas": 39567.92933, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 80.0, "bat_mas": "NÃO", "gap_meg": 43524.72133, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 67.0, "bat_meg": "NÃO"}, {"label": "13 a 19", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "sched": null, "gap_mas": 39567.92933, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 80.0, "bat_mas": "NÃO", "gap_meg": 43524.72133, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 67.0, "bat_meg": "NÃO"}, {"label": "20 a 26", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "sched": null, "gap_mas": 39567.92933, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 80.0, "bat_mas": "NÃO", "gap_meg": 43524.72133, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 67.0, "bat_meg": "NÃO"}, {"label": "27 a 30", "min": 18686.15333, "bas": 20554.768, "mas": 22610.24533, "meg": 24871.26933, "sched": null, "gap_mas": 22610.24533, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 46.0, "bat_mas": "NÃO", "gap_meg": 24871.26933, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 39.0, "bat_meg": "NÃO"}]}, {"name": "Outubro", "sched_atual_mes": null, "weeks": [{"label": "1 a 10", "min": 52525.11935, "bas": 57777.63226, "mas": 63555.39677, "meg": 69910.93548, "sched": null, "gap_mas": 63555.39677, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 128.0, "bat_mas": "NÃO", "gap_meg": 69910.93548, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 108.0, "bat_meg": "NÃO"}, {"label": "11 a 17", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "sched": null, "gap_mas": 44488.77774, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 89.0, "bat_mas": "NÃO", "gap_meg": 48937.65484, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 76.0, "bat_meg": "NÃO"}, {"label": "18 a 24", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "sched": null, "gap_mas": 44488.77774, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 89.0, "bat_mas": "NÃO", "gap_meg": 48937.65484, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 76.0, "bat_meg": "NÃO"}, {"label": "25 a 31", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "sched": null, "gap_mas": 44488.77774, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 89.0, "bat_mas": "NÃO", "gap_meg": 48937.65484, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 76.0, "bat_meg": "NÃO"}]}, {"name": "Novembro", "sched_atual_mes": null, "weeks": [{"label": "1 a 7", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "sched": null, "gap_mas": 36326.29, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 73.0, "bat_mas": "NÃO", "gap_meg": 39958.919, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 62.0, "bat_meg": "NÃO"}, {"label": "8 a 14", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "sched": null, "gap_mas": 36326.29, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 73.0, "bat_mas": "NÃO", "gap_meg": 39958.919, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 62.0, "bat_meg": "NÃO"}, {"label": "15 a 21", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "sched": null, "gap_mas": 36326.29, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 73.0, "bat_mas": "NÃO", "gap_meg": 39958.919, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 62.0, "bat_meg": "NÃO"}, {"label": "22 a 30", "min": 38599.365, "bas": 42459.3, "mas": 46705.23, "meg": 51375.753, "sched": null, "gap_mas": 46705.23, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 94.0, "bat_mas": "NÃO", "gap_meg": 51375.753, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 80.0, "bat_meg": "NÃO"}]}, {"name": "Dezembro", "sched_atual_mes": null, "weeks": [{"label": "1 a 5", "min": 24391.91935, "bas": 26831.11129, "mas": 29514.22258, "meg": 32465.64355, "sched": null, "gap_mas": 29514.22258, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 60.0, "bat_mas": "NÃO", "gap_meg": 32465.64355, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 50.0, "bat_meg": "NÃO"}, {"label": "6 a 12", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "sched": null, "gap_mas": 41319.91161, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 83.0, "bat_mas": "NÃO", "gap_meg": 45451.90097, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 70.0, "bat_meg": "NÃO"}, {"label": "13 a 19", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "sched": null, "gap_mas": 41319.91161, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 83.0, "bat_mas": "NÃO", "gap_meg": 45451.90097, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 70.0, "bat_meg": "NÃO"}, {"label": "20 a 26", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "sched": null, "gap_mas": 41319.91161, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 83.0, "bat_mas": "NÃO", "gap_meg": 45451.90097, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 70.0, "bat_meg": "NÃO"}, {"label": "27 a 31", "min": 24391.91935, "bas": 26831.11129, "mas": 29514.22258, "meg": 32465.64355, "sched": null, "gap_mas": 29514.22258, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 60.0, "bat_mas": "NÃO", "gap_meg": 32465.64355, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 50.0, "bat_meg": "NÃO"}]}]};
+const DATA = {"months": [{"name": "Janeiro", "min": 109399.875, "bas": 120339.8625, "mas": 132373.8488, "meg": 145611.2336, "r2025": 84153.75, "mp": 111077.06, "qb": 99741.9, "growth": 0.3199300091}, {"name": "Fevereiro", "min": 106428.296, "bas": 117071.1256, "mas": 128778.2382, "meg": 141656.062, "r2025": 81867.92, "mp": 125405.25, "qb": 109367.31, "growth": 0.5317996353}, {"name": "Março", "min": 106503.8, "bas": 117154.18, "mas": 128869.598, "meg": 141756.5578, "r2025": 81926.0, "mp": 132595.94, "qb": 122521.95, "growth": 0.6184842419}, {"name": "Abril", "min": 132744.586, "bas": 146019.0446, "mas": 160620.9491, "meg": 176683.044, "r2025": 102111.22, "mp": 137126.22, "qb": 117477.3, "growth": 0.3429104069}, {"name": "Maio", "min": 132494.856, "bas": 145744.3416, "mas": 160318.7758, "meg": 176350.6533, "r2025": 101919.12, "mp": 163832.24, "qb": 135096.56, "growth": 0.607473063}, {"name": "Junho", "min": 119732.678, "bas": 131705.9458, "mas": 144876.5404, "meg": 159364.1944, "r2025": 92102.06, "mp": 137927.92, "qb": null, "growth": 0.4975552121}, {"name": "Julho", "min": 134169.1, "bas": 147586.01, "mas": 162344.611, "meg": 178579.0721, "r2025": 103207.0, "mp": 99882.19, "qb": null, "growth": -0.03221496604}, {"name": "Agosto", "min": 145591.329, "bas": 160150.4619, "mas": 176165.5081, "meg": 193782.0589, "r2025": 111993.33, "mp": null, "qb": null, "growth": null}, {"name": "Setembro", "min": 140146.149, "bas": 154160.7639, "mas": 169576.8403, "meg": 186534.5243, "r2025": 107804.73, "mp": null, "qb": null, "growth": null}, {"name": "Outubro", "min": 162827.873, "bas": 179110.6603, "mas": 197021.7263, "meg": 216723.899, "r2025": 125252.21, "mp": null, "qb": null, "growth": null}, {"name": "Novembro", "min": 128664.549, "bas": 141531.0039, "mas": 155684.1043, "meg": 171252.5147, "r2025": 98972.73, "mp": null, "qb": null, "growth": null}, {"name": "Dezembro", "min": 151229.897, "bas": 166352.8867, "mas": 182988.1754, "meg": 201286.9929, "r2025": 116330.69, "mp": null, "qb": null, "growth": null}], "quarters": [{"min": 322331.971, "bas": 354565.1681, "mas": 390021.6849, "meg": 429023.8534, "r2025": 247947.67}, {"min": 384972.12, "bas": 423469.332, "mas": 465816.2652, "meg": 512397.8917, "r2025": 296132.4}, {"min": 419906.578, "bas": 461897.2358, "mas": 508086.9594, "meg": 558895.6553, "r2025": 323005.06}, {"min": 442722.319, "bas": 486994.5509, "mas": 535694.006, "meg": 589263.4066, "r2025": 340555.63}], "annual": {"min": 1569932.988, "bas": 1726926.287, "mas": 1899618.915, "meg": 2089580.807, "r2025": 1207640.76}, "acompanhamento": [{"name": "Janeiro", "real": 111077.06, "weeks": []}, {"name": "Fevereiro", "real": 125405.25, "weeks": []}, {"name": "Março", "real": 132595.94, "weeks": []}, {"name": "Abril", "real": 137126.22, "weeks": []}, {"name": "Maio", "real": 163832.24, "weeks": []}, {"name": "Junho", "real": 137927.92, "weeks": []}, {"name": "Julho", "real": 99882.19, "weeks": [{"label": "1 a 4", "min": 17312.14194, "bas": 19043.35613, "mas": 20947.69161, "meg": 23042.46065, "real": 24167.86}, {"label": "5 a 11", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "real": 35445.61}, {"label": "12 a 18", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "real": 40268.72}, {"label": "19 a 25", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "real": null}, {"label": "26 a 31", "min": 25968.2129, "bas": 28565.03419, "mas": 31421.53742, "meg": 34563.69097, "real": null}]}, {"name": "Agosto", "real": null, "weeks": [{"label": "1 a 8", "min": 37571.95613, "bas": 41329.15097, "mas": 45462.0671, "meg": 50008.27355, "real": null}, {"label": "9 a 15", "min": 32875.46161, "bas": 36163.0071, "mas": 39779.30871, "meg": 43757.23935, "real": null}, {"label": "16 a 22", "min": 32875.46161, "bas": 36163.0071, "mas": 39779.30871, "meg": 43757.23935, "real": null}, {"label": "23 a 31", "min": 42268.45065, "bas": 46495.29484, "mas": 51144.82548, "meg": 56259.30774, "real": null}]}, {"name": "Setembro", "real": null, "weeks": [{"label": "1 a 5", "min": 23357.69167, "bas": 25693.46, "mas": 28262.80667, "meg": 31089.08667, "real": null}, {"label": "6 a 12", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "real": null}, {"label": "13 a 19", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "real": null}, {"label": "20 a 26", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "real": null}, {"label": "27 a 30", "min": 18686.15333, "bas": 20554.768, "mas": 22610.24533, "meg": 24871.26933, "real": null}]}, {"name": "Outubro", "real": null, "weeks": [{"label": "1 a 10", "min": 52525.11935, "bas": 57777.63226, "mas": 63555.39677, "meg": 69910.93548, "real": null}, {"label": "11 a 17", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "real": null}, {"label": "18 a 24", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "real": null}, {"label": "25 a 31", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "real": null}]}, {"name": "Novembro", "real": null, "weeks": [{"label": "1 a 7", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "real": null}, {"label": "8 a 14", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "real": null}, {"label": "15 a 21", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "real": null}, {"label": "22 a 30", "min": 38599.365, "bas": 42459.3, "mas": 46705.23, "meg": 51375.753, "real": null}]}, {"name": "Dezembro", "real": null, "weeks": [{"label": "1 a 5", "min": 24391.91935, "bas": 26831.11129, "mas": 29514.22258, "meg": 32465.64355, "real": null}, {"label": "6 a 12", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "real": null}, {"label": "13 a 19", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "real": null}, {"label": "20 a 26", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "real": null}, {"label": "27 a 31", "min": 24391.91935, "bas": 26831.11129, "mas": 29514.22258, "meg": 32465.64355, "real": null}]}], "schedule": [{"name": "Julho", "sched_atual_mes": 160137.09, "weeks": [{"label": "1 a 4", "min": 17312.14194, "bas": 19043.35613, "mas": 20947.69161, "meg": 23042.46065, "sched": 24167.86, "gap_mas": -3220.168387, "pct_mas": 1.15372426, "ticket_mas": 500.0, "cleans_mas": -7.0, "bat_mas": "SIM", "gap_meg": -1125.399355, "pct_meg": 1.048840242, "ticket_meg": 500.0, "cleans_meg": -3.0, "bat_meg": "SIM"}, {"label": "5 a 11", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "sched": 35445.61, "gap_mas": 1212.850323, "pct_mas": 0.9669148592, "ticket_mas": 500.0, "cleans_mas": 3.0, "bat_mas": "NÃO", "gap_meg": 4878.696129, "pct_meg": 0.8790135133, "ticket_meg": 500.0, "cleans_meg": 10.0, "bat_meg": "NÃO"}, {"label": "12 a 18", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "sched": 40268.72, "gap_mas": -3610.259677, "pct_mas": 1.098483669, "ticket_mas": 500.0, "cleans_mas": -8.0, "bat_mas": "SIM", "gap_meg": 55.58612903, "pct_meg": 0.998621523, "ticket_meg": 500.0, "cleans_meg": 1.0, "bat_meg": "NÃO"}, {"label": "19 a 25", "min": 30296.24839, "bas": 33325.87323, "mas": 36658.46032, "meg": 40324.30613, "sched": 31047.0, "gap_mas": 5611.460323, "pct_mas": 0.8469259136, "ticket_mas": 500.0, "cleans_mas": 12.0, "bat_mas": "NÃO", "gap_meg": 9277.306129, "pct_meg": 0.769932653, "ticket_meg": 500.0, "cleans_meg": 19.0, "bat_meg": "NÃO"}, {"label": "26 a 31", "min": 25968.2129, "bas": 28565.03419, "mas": 31421.53742, "meg": 34563.69097, "sched": 29207.9, "gap_mas": 2213.637419, "pct_mas": 0.9295503148, "ticket_mas": 500.0, "cleans_mas": 5.0, "bat_mas": "NÃO", "gap_meg": 5355.790968, "pct_meg": 0.8450457455, "ticket_meg": 500.0, "cleans_meg": 11.0, "bat_meg": "NÃO"}]}, {"name": "Agosto", "sched_atual_mes": 116820.9, "weeks": [{"label": "1 a 8", "min": 37571.95613, "bas": 41329.15097, "mas": 45462.0671, "meg": 50008.27355, "sched": 27823.0, "gap_mas": 17639.0671, "pct_mas": 0.6120047278, "ticket_mas": 500.0, "cleans_mas": 36.0, "bat_mas": "NÃO", "gap_meg": 22185.27355, "pct_meg": 0.5563679373, "ticket_meg": 650.0, "cleans_meg": 35.0, "bat_meg": "NÃO"}, {"label": "9 a 15", "min": 32875.46161, "bas": 36163.0071, "mas": 39779.30871, "meg": 43757.23935, "sched": 27223.0, "gap_mas": 12556.30871, "pct_mas": 0.6843507563, "ticket_mas": 500.0, "cleans_mas": 26.0, "bat_mas": "NÃO", "gap_meg": 16534.23935, "pct_meg": 0.6221370544, "ticket_meg": 650.0, "cleans_meg": 26.0, "bat_meg": "NÃO"}, {"label": "16 a 22", "min": 32875.46161, "bas": 36163.0071, "mas": 39779.30871, "meg": 43757.23935, "sched": 27236.0, "gap_mas": 12543.30871, "pct_mas": 0.6846775594, "ticket_mas": 500.0, "cleans_mas": 26.0, "bat_mas": "NÃO", "gap_meg": 16521.23935, "pct_meg": 0.6224341481, "ticket_meg": 650.0, "cleans_meg": 26.0, "bat_meg": "NÃO"}, {"label": "23 a 31", "min": 42268.45065, "bas": 46495.29484, "mas": 51144.82548, "meg": 56259.30774, "sched": 34538.9, "gap_mas": 16605.92548, "pct_mas": 0.6753156292, "ticket_mas": 500.0, "cleans_mas": 34.0, "bat_mas": "NÃO", "gap_meg": 21720.40774, "pct_meg": 0.6139233024, "ticket_meg": 650.0, "cleans_meg": 34.0, "bat_meg": "NÃO"}]}, {"name": "Setembro", "sched_atual_mes": null, "weeks": [{"label": "1 a 5", "min": 23357.69167, "bas": 25693.46, "mas": 28262.80667, "meg": 31089.08667, "sched": null, "gap_mas": 28262.80667, "pct_mas": 0.0, "ticket_mas": 650.0, "cleans_mas": 44.0, "bat_mas": "NÃO", "gap_meg": 31089.08667, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 48.0, "bat_meg": "NÃO"}, {"label": "6 a 12", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "sched": null, "gap_mas": 39567.92933, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 80.0, "bat_mas": "NÃO", "gap_meg": 43524.72133, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 67.0, "bat_meg": "NÃO"}, {"label": "13 a 19", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "sched": null, "gap_mas": 39567.92933, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 80.0, "bat_mas": "NÃO", "gap_meg": 43524.72133, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 67.0, "bat_meg": "NÃO"}, {"label": "20 a 26", "min": 32700.76833, "bas": 35970.844, "mas": 39567.92933, "meg": 43524.72133, "sched": null, "gap_mas": 39567.92933, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 80.0, "bat_mas": "NÃO", "gap_meg": 43524.72133, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 67.0, "bat_meg": "NÃO"}, {"label": "27 a 30", "min": 18686.15333, "bas": 20554.768, "mas": 22610.24533, "meg": 24871.26933, "sched": null, "gap_mas": 22610.24533, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 46.0, "bat_mas": "NÃO", "gap_meg": 24871.26933, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 39.0, "bat_meg": "NÃO"}]}, {"name": "Outubro", "sched_atual_mes": null, "weeks": [{"label": "1 a 10", "min": 52525.11935, "bas": 57777.63226, "mas": 63555.39677, "meg": 69910.93548, "sched": null, "gap_mas": 63555.39677, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 128.0, "bat_mas": "NÃO", "gap_meg": 69910.93548, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 108.0, "bat_meg": "NÃO"}, {"label": "11 a 17", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "sched": null, "gap_mas": 44488.77774, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 89.0, "bat_mas": "NÃO", "gap_meg": 48937.65484, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 76.0, "bat_meg": "NÃO"}, {"label": "18 a 24", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "sched": null, "gap_mas": 44488.77774, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 89.0, "bat_mas": "NÃO", "gap_meg": 48937.65484, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 76.0, "bat_meg": "NÃO"}, {"label": "25 a 31", "min": 36767.58355, "bas": 40444.34258, "mas": 44488.77774, "meg": 48937.65484, "sched": null, "gap_mas": 44488.77774, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 89.0, "bat_mas": "NÃO", "gap_meg": 48937.65484, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 76.0, "bat_meg": "NÃO"}]}, {"name": "Novembro", "sched_atual_mes": null, "weeks": [{"label": "1 a 7", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "sched": null, "gap_mas": 36326.29, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 73.0, "bat_mas": "NÃO", "gap_meg": 39958.919, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 62.0, "bat_meg": "NÃO"}, {"label": "8 a 14", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "sched": null, "gap_mas": 36326.29, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 73.0, "bat_mas": "NÃO", "gap_meg": 39958.919, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 62.0, "bat_meg": "NÃO"}, {"label": "15 a 21", "min": 30021.72833, "bas": 33023.9, "mas": 36326.29, "meg": 39958.919, "sched": null, "gap_mas": 36326.29, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 73.0, "bat_mas": "NÃO", "gap_meg": 39958.919, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 62.0, "bat_meg": "NÃO"}, {"label": "22 a 30", "min": 38599.365, "bas": 42459.3, "mas": 46705.23, "meg": 51375.753, "sched": null, "gap_mas": 46705.23, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 94.0, "bat_mas": "NÃO", "gap_meg": 51375.753, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 80.0, "bat_meg": "NÃO"}]}, {"name": "Dezembro", "sched_atual_mes": null, "weeks": [{"label": "1 a 5", "min": 24391.91935, "bas": 26831.11129, "mas": 29514.22258, "meg": 32465.64355, "sched": null, "gap_mas": 29514.22258, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 60.0, "bat_mas": "NÃO", "gap_meg": 32465.64355, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 50.0, "bat_meg": "NÃO"}, {"label": "6 a 12", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "sched": null, "gap_mas": 41319.91161, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 83.0, "bat_mas": "NÃO", "gap_meg": 45451.90097, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 70.0, "bat_meg": "NÃO"}, {"label": "13 a 19", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "sched": null, "gap_mas": 41319.91161, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 83.0, "bat_mas": "NÃO", "gap_meg": 45451.90097, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 70.0, "bat_meg": "NÃO"}, {"label": "20 a 26", "min": 34148.6871, "bas": 37563.55581, "mas": 41319.91161, "meg": 45451.90097, "sched": null, "gap_mas": 41319.91161, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 83.0, "bat_mas": "NÃO", "gap_meg": 45451.90097, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 70.0, "bat_meg": "NÃO"}, {"label": "27 a 31", "min": 24391.91935, "bas": 26831.11129, "mas": 29514.22258, "meg": 32465.64355, "sched": null, "gap_mas": 29514.22258, "pct_mas": 0.0, "ticket_mas": 500.0, "cleans_mas": 60.0, "bat_mas": "NÃO", "gap_meg": 32465.64355, "pct_meg": 0.0, "ticket_meg": 650.0, "cleans_meg": 50.0, "bat_meg": "NÃO"}]}]};
 const months = DATA.months;
 const quartersMeta = DATA.quarters;
 const annualMeta = DATA.annual;
@@ -618,5 +880,9 @@ months.forEach(m=>{
 
 document.getElementById("ts").textContent="Atualizado: "+new Date().toLocaleDateString("pt-BR",{day:"2-digit",month:"short",year:"numeric"});
 </script>
+
+</div>
+
+
 </body>
 </html>
