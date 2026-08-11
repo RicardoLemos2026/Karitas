@@ -768,7 +768,7 @@ quarterLabels.forEach((q,qi)=>{
 // ── SCHEDULE SEMANAL (design imagem)
 const schedSection = document.getElementById("schedSection");
 
-schedData.slice(0,1).forEach((sm, mi) => {
+schedData.slice(1,2).forEach((sm, mi) => {
   const acMonth = acData.find(a=>a.name===sm.name)||{weeks:[]};
   const monthMeta = months.find(m=>m.name===sm.name);
 
